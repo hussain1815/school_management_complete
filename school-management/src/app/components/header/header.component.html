@@ -3,36 +3,46 @@
     <!-- Logo Section -->
     <div class="logo">
       <div class="logo-icon">
-        <!-- <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="16" cy="16" r="16" fill="#FF8C00"/>
-          <path d="M16 8L20 12H18V20H14V12H12L16 8Z" fill="white"/>
-        </svg> -->
         ☀️
       </div>
-      <span class="logo-text">Abad Alshams</span>
+      <span class="logo-text">{{ 'HEADER.LOGO' | translate }}</span>
     </div>
 
     <!-- Navigation Menu -->
     <nav class="nav-menu" [class.active]="isMenuOpen">
       <ul class="nav-list">
         <li class="nav-item">
-          <a href="#home" class="nav-link" (click)="scrollToSection('home', $event)">Home</a>
+          <a href="#home" class="nav-link" (click)="scrollToSection('home', $event)">{{ 'HEADER.HOME' | translate }}</a>
         </li>
         <li class="nav-item">
-          <a href="#about" class="nav-link" (click)="scrollToSection('about', $event)">About</a>
+          <a href="#about" class="nav-link" (click)="scrollToSection('about', $event)">{{ 'HEADER.ABOUT' | translate }}</a>
         </li>
         <li class="nav-item">
-          <a href="#curriculum" class="nav-link" (click)="scrollToSection('curriculum', $event)">Curriculum</a>
+          <a href="#curriculum" class="nav-link" (click)="scrollToSection('curriculum', $event)">{{ 'HEADER.CURRICULUM' | translate }}</a>
         </li>
         <li class="nav-item">
-          <a href="#facilities" class="nav-link" (click)="scrollToSection('facilities', $event)">Facilities</a>
+          <a href="#facilities" class="nav-link" (click)="scrollToSection('facilities', $event)">{{ 'HEADER.FACILITIES' | translate }}</a>
         </li>
       </ul>
     </nav>
 
-    <!-- Join Us Button -->
+    <!-- Header Actions -->
     <div class="header-actions">
-      <button class="join-btn" (click)="downloadEnrollmentForm()">JOIN US</button>
+      <!-- Language Toggle -->
+      <button class="lang-toggle" (click)="switchLanguage()" title="Switch Language">
+        {{ currentLang === 'en' ? 'عربي' : 'English' }}
+      </button>
+      
+      <!-- Admin Login -->
+      <a routerLink="/login" class="admin-link" title="Admin Login">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 12C14.21 12 16 10.21 16 8C16 5.79 14.21 4 12 4C9.79 4 8 5.79 8 8C8 10.21 9.79 12 12 12ZM12 14C9.33 14 4 15.34 4 18V20H20V18C20 15.34 14.67 14 12 14Z" fill="currentColor"/>
+        </svg>
+        Admin
+      </a>
+      
+      <!-- Join Us Button -->
+      <button class="join-btn" (click)="downloadEnrollmentForm()">{{ 'HEADER.JOIN_US' | translate }}</button>
       
       <!-- Mobile Menu Toggle -->
       <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">

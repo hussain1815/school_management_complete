@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-philosophy',
-  imports: [],
+  imports: [TranslateModule],
   templateUrl: './philosophy.component.html',
   styleUrl: './philosophy.component.scss'
 })

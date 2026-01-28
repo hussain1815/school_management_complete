@@ -6,10 +6,9 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
-
 
 model Inquiry{ 
   id Int @id @default(autoincrement()) 
@@ -18,4 +17,4 @@ model Inquiry{
   email String 
   inquiry_Message String 
   createdAt DateTime @default(now())
-   }
+}

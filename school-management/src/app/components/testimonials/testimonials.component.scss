@@ -254,22 +254,22 @@
 }
 
 // Background decorative elements
-.testimonials::before {
-  content: '';
-  position: absolute;
-  top: 20%;
-  left: -100px;
-  width: 200px;
-  height: 200px;
-  background: linear-gradient(45deg, #4A90E2, #63B3ED);
-  border-radius: 50%;
-  opacity: 0.03;
-  z-index: 0;
+// .testimonials::before {
+//   content: '';
+//   position: absolute;
+//   top: 20%;
+//   left: -100px;
+//   width: 200px;
+//   height: 200px;
+//   background: linear-gradient(45deg, #4A90E2, #63B3ED);
+//   border-radius: 50%;
+//   opacity: 0.03;
+//   z-index: 0;
 
-  @media (max-width: 768px) {
-    display: none;
-  }
-}
+//   @media (max-width: 768px) {
+//     display: none;
+//   }
+// }
 
 // .testimonials::after {
 //   content: '';

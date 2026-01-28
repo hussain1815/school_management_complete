@@ -1,9 +1,11 @@
+<app-header></app-header>
+
 <section class="policies">
   <div class="container">
     <!-- Header -->
     <div class="policies-header">
-      <h1 class="policies-title">School Policies</h1>
-      <p class="policies-subtitle">Important guidelines and procedures for our school community</p>
+      <h1 class="policies-title">{{ 'POLICIES.TITLE' | translate }}</h1>
+      <p class="policies-subtitle">{{ 'POLICIES.SUBTITLE' | translate }}</p>
     </div>
 
     <!-- Policies Content -->
@@ -11,146 +13,97 @@
       
       <!-- Morning Drop-Off -->
       <div class="policy-section">
-        <h2 class="policy-title">Morning Drop-Off</h2>
+        <h2 class="policy-title">{{ 'POLICIES.DROP_OFF_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">To ensure a smooth and secure start to the day, please follow our morning drop-off guidelines:</p>
+          <p class="policy-intro">{{ 'POLICIES.DROP_OFF_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li>Arrive at the school 10 minutes before the scheduled start time and walk your child to the designated drop-off zone.</li>
-            <li>Maintain a calm and organized atmosphere during drop-off. Encourage your child to say goodbye in a positive way, reassuring them that you will return later.</li>
-            <li>Follow the designated drop-off time closely to avoid delays for all families. We appreciate your punctuality.</li>
-            <li>Help your child unpack any items (backpack, lunch box) and remind them to listen to their teacher's instructions once class begins.</li>
-            <li>Always hand over your child to a staff member or teacher before leaving the premises. This ensures every child is safely accounted for.</li>
+            <li *ngFor="let item of ('POLICIES.DROP_OFF_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">These measures help create a peaceful transition into the school day for everyone.</p>
+          <p class="policy-note">{{ 'POLICIES.DROP_OFF_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Home Time -->
       <div class="policy-section">
-        <h2 class="policy-title">Home Time</h2>
+        <h2 class="policy-title">{{ 'POLICIES.HOME_TIME_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">To make dismissal smooth and safe, parents should observe the following:</p>
+          <p class="policy-intro">{{ 'POLICIES.HOME_TIME_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>Be on time:</strong> Arrive promptly at your child's scheduled pick-up time. Punctuality maintains daily routines and shows respect for everyone's schedule.</li>
-            <li><strong>Communicate:</strong> If you expect to be late or have an emergency, please inform the school as soon as possible. This allows staff to make arrangements and ensures your child remains safe and comfortable until you arrive.</li>
-            <li><strong>Authorized Pick-up:</strong> Only people listed on your child's authorized pick-up list should collect your child. If there are any changes, notify the school in writing immediately.</li>
-            <li><strong>Valid ID:</strong> The person picking up your child may be asked to show identification. This is for your child's safety and the school's security procedures.</li>
-            <li><strong>Sign-Out Procedures:</strong> Follow our sign-out system at dismissal. Accurately record the time of pick-up for accountability and safety reasons.</li>
-            <li><strong>Respect Boundaries:</strong> Please wait in the designated pick-up area. This helps avoid crowding and keeps the children safe during dismissal.</li>
-            <li><strong>Courteous Conduct:</strong> Be patient and courteous to staff and other parents during pick-up. A positive attitude sets a good example for children and fosters a friendly school community.</li>
+            <li *ngFor="let item of ('POLICIES.HOME_TIME_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">By adhering to these guidelines, parents help ensure a safe and orderly end to each school day.</p>
+          <p class="policy-note">{{ 'POLICIES.HOME_TIME_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Health and Hygiene -->
       <div class="policy-section">
-        <h2 class="policy-title">Health and Hygiene</h2>
+        <h2 class="policy-title">{{ 'POLICIES.HEALTH_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">We prioritize the health and hygiene of all children and staff. Our health policy includes:</p>
+          <p class="policy-intro">{{ 'POLICIES.HEALTH_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>Handwashing:</strong> Children wash their hands with soap and water for at least 20 seconds before meals, after using the restroom, and after outdoor play. We teach proper handwashing techniques to prevent the spread of germs.</li>
-            <li><strong>Personal Hygiene:</strong> We encourage habits like covering coughs and sneezes with elbows or tissues. Tissues are provided and disposed of in sealed bins to maintain cleanliness.</li>
-            <li><strong>Illness Guidelines:</strong> Children with fever, vomiting, diarrhea, or severe cough should stay home. We communicate clear instructions to parents about the symptoms that require a child to stay home until fully recovered.</li>
-            <li><strong>Regular Cleaning:</strong> Our staff follows a rigorous cleaning schedule. Frequently-touched surfaces (door handles, toys, tables) are cleaned and disinfected daily.</li>
-            <li><strong>Immunizations:</strong> All children must have up-to-date immunizations. We keep records of each child's vaccinations and remind parents of any needed updates.</li>
-            <li><strong>Health Screenings:</strong> We conduct periodic vision, hearing, and dental check-ups to identify any issues early and take appropriate action.</li>
-            <li><strong>Allergy Management:</strong> We maintain a list of students with known allergies and work with parents to accommodate dietary or environmental needs.</li>
-            <li><strong>Nutritious Meals:</strong> We promote healthy eating by providing balanced meals and snacks. Parents are encouraged to pack healthy lunches with fruits, vegetables, and minimal processed foods.</li>
-            <li><strong>First Aid Training:</strong> Our staff is trained in basic first aid procedures. We are prepared to address minor injuries or illnesses promptly.</li>
-            <li><strong>Health Education:</strong> We regularly educate children (and parents) about healthy habits, hygiene, and safety both at school and at home.</li>
+            <li *ngFor="let item of ('POLICIES.HEALTH_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">These measures create a safe, hygienic environment where children can learn and play with minimized health risks. Our policies are reviewed regularly in consultation with health experts to stay up-to-date with best practices.</p>
+          <p class="policy-note">{{ 'POLICIES.HEALTH_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Registration -->
       <div class="policy-section">
-        <h2 class="policy-title">Registration</h2>
+        <h2 class="policy-title">{{ 'POLICIES.REGISTRATION_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">Enrollment at Abad Alshams Kindergarten follows these guidelines:</p>
+          <p class="policy-intro">{{ 'POLICIES.REGISTRATION_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>Academic Session:</strong> Our school year runs from September through June.</li>
-            <li><strong>Eligibility:</strong> Children age 3, 4 and 5 are eligible for admission in Nursery, KG-1, and KG-2. Please provide proof of age (birth certificate or passport) when applying.</li>
-            <li><strong>Required Documents:</strong> At registration, parents must submit documents as requested at the time of registration. Any relevant legal documents (custody papers, etc.) should also be provided.</li>
-            <li><strong>Registration Process:</strong> Registration dates and times will be announced on our website and social media. Parents should visit the school during these periods to complete paperwork. We recommend scheduling an appointment to ensure prompt service.</li>
-            <li><strong>Class Assignment:</strong> Students are assigned to classes based on factors like age, class size, and available resources. The administration may adjust placements to balance student-to-teacher ratios.</li>
-            <li><strong>Late Registration:</strong> If you register after the official period, please contact the school office for availability and any additional requirements.</li>
-            <li><strong>Confirmation:</strong> After completing registration, parents will receive confirmation of enrollment and further details about orientation, schedules, and school policies.</li>
-            <li><strong>Confidentiality:</strong> All information and documents provided are kept strictly confidential, in accordance with privacy regulations.</li>
+            <li *ngFor="let item of ('POLICIES.REGISTRATION_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">Our registration policy is reviewed and updated as needed. Please contact our admissions office for the most current information or any questions you may have.</p>
+          <p class="policy-note">{{ 'POLICIES.REGISTRATION_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Fees -->
       <div class="policy-section">
-        <h2 class="policy-title">Fees</h2>
+        <h2 class="policy-title">{{ 'POLICIES.FEES_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">Our fee structure is transparent and designed for convenience:</p>
+          <p class="policy-intro">{{ 'POLICIES.FEES_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li>Tuition is charged on a monthly, termly, or annual basis (as per the school's current policy). Payment schedules and amounts will be communicated to parents before enrollment and in accordance with Ministry of Education regulations.</li>
-            <li><strong>Payment Methods:</strong> We accept cash, cheques, and online bank transfers. Detailed payment instructions will be provided to parents each term.</li>
-            <li><strong>Withdrawal Refunds:</strong> Parents are requested to read refund policy, which has been communicated separately on the registration form. The registration fee remains non-refundable.</li>
-            <li><strong>Sibling Discounts:</strong> We offer tuition discounts for siblings. Details of any applicable discount will be provided in the fee schedule shared with parents.</li>
+            <li *ngFor="let item of ('POLICIES.FEES_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">Our fee policy is subject to periodic review, and we will inform parents promptly of any changes.</p>
+          <p class="policy-note">{{ 'POLICIES.FEES_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Withdrawal -->
       <div class="policy-section">
-        <h2 class="policy-title">Withdrawal</h2>
+        <h2 class="policy-title">{{ 'POLICIES.WITHDRAWAL_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">If a family needs to withdraw a child from Abad Alshams Kindergarten, the following steps apply:</p>
+          <p class="policy-intro">{{ 'POLICIES.WITHDRAWAL_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>Notice:</strong> Parents must submit a written notice of withdrawal at least one month before the intended last day of attendance. This gives the school time to complete necessary administrative tasks.</li>
-            <li><strong>Meeting:</strong> After receiving the withdrawal notice, the administration will arrange a meeting with the parents to discuss the process and any concerns.</li>
-            <li><strong>Personal Belongings:</strong> Before the withdrawal date, parents should collect all personal items belonging to the child.</li>
-            <li><strong>Financial Obligations:</strong> Any outstanding tuition or fees must be paid in full before the withdrawal is finalized. The administration will inform parents of any pending charges.</li>
-            <li><strong>Academic Records:</strong> Upon request, the school will prepare a copy of the child's academic records for transfer to a new school.</li>
-            <li><strong>Finalization:</strong> Once all steps are completed, the child's enrollment will be formally terminated and our records updated accordingly.</li>
+            <li *ngFor="let item of ('POLICIES.WITHDRAWAL_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">This withdrawal policy is designed to ensure a smooth transition and is updated as needed in compliance with Ministry regulations.</p>
+          <p class="policy-note">{{ 'POLICIES.WITHDRAWAL_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- First Aid -->
       <div class="policy-section">
-        <h2 class="policy-title">First Aid</h2>
+        <h2 class="policy-title">{{ 'POLICIES.FIRST_AID_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">The health and safety of our students are paramount. Our first aid policy includes:</p>
+          <p class="policy-intro">{{ 'POLICIES.FIRST_AID_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>First Aid Kit:</strong> A fully stocked first aid kit is kept accessible in the school at all times. It contains supplies like bandages, antiseptics, gloves, and scissors. The kit is checked and replenished regularly.</li>
-            <li><strong>Staff Training:</strong> All teachers and relevant staff receive basic first aid and CPR training. Regular refreshers ensure that their knowledge and skills remain up to date.</li>
-            <li><strong>Emergency Information:</strong> Each child's emergency contacts and medical information (allergies, medications, conditions) are maintained on file. Copies are kept in the first aid kit and the school office for quick reference.</li>
-            <li><strong>Incident Reporting:</strong> Any injury or accident is documented on an incident report form, noting the nature of the injury, treatment given, and follow-up actions. Parents are promptly informed of any incidents involving their child.</li>
-            <li><strong>Parent Communication:</strong> We notify parents immediately if their child requires medical attention beyond basic first aid. This ensures transparency and allows parents to provide further instructions or pickup if necessary.</li>
-            <li><strong>Special Conditions:</strong> Staff are aware of any chronic conditions (e.g., asthma, severe allergies, diabetes) among students. Individualized first aid plans (such as EpiPen or inhaler availability) are implemented as needed.</li>
-            <li><strong>Emergency Procedures:</strong> The school has clear procedures for emergencies like fire drills, lockdowns, or severe weather. First aid protocols are included in these plans to ensure readiness for any situation.</li>
-            <li><strong>Review and Improvement:</strong> The first aid policy is reviewed periodically. We incorporate feedback from staff, parents, and healthcare professionals to improve our emergency response.</li>
-            <li><strong>Confidentiality:</strong> All medical information is kept confidential and shared only with staff members who need to know for safety reasons.</li>
+            <li *ngFor="let item of ('POLICIES.FIRST_AID_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">By adhering to this policy, we strive to provide a safe environment and appropriate care for every child's well-being.</p>
+          <p class="policy-note">{{ 'POLICIES.FIRST_AID_NOTE' | translate }}</p>
         </div>
       </div>
 
       <!-- Quality Assurance -->
       <div class="policy-section">
-        <h2 class="policy-title">Quality Assurance</h2>
+        <h2 class="policy-title">{{ 'POLICIES.QUALITY_TITLE' | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">At Abad Alshams Kindergarten, we are committed to continuous improvement and the highest standards of education. Our quality assurance measures include:</p>
+          <p class="policy-intro">{{ 'POLICIES.QUALITY_INTRO' | translate }}</p>
           <ul class="policy-list">
-            <li><strong>Curriculum and Lesson Planning:</strong> We adopt age-appropriate, nationally-aligned curricula. Teachers design engaging lesson plans that meet diverse learners' needs and interests.</li>
-            <li><strong>Qualified and Dedicated Staff:</strong> We hire experienced early childhood educators with the proper qualifications. Staff participate in ongoing professional development to stay current with best practices.</li>
-            <li><strong>Safety and Security:</strong> We maintain a clean, child-friendly environment. Regular safety inspections and secure entry procedures ensure that our students always feel safe and protected.</li>
-            <li><strong>Parental Involvement:</strong> We foster strong partnerships with families. Through regular progress reports, parent-teacher meetings, and school events, we keep parents informed and involved in their child's education.</li>
-            <li><strong>Continuous Assessment:</strong> Student learning is monitored through observations and age-appropriate assessments. This helps teachers identify each child's progress and tailor instruction to individual needs.</li>
-            <li><strong>Ongoing Improvement:</strong> We regularly review all policies, procedures, and programs. Feedback from teachers, parents, and children is used to refine our methods. We strive for excellence by adapting and innovating continuously.</li>
-            <li><strong>Health and Nutrition:</strong> We emphasize healthy lifestyles. Nutritious meals and snacks are provided, and children are taught good hygiene habits. Physical activity is encouraged daily.</li>
-            <li><strong>Community Engagement:</strong> We collaborate with local organizations and experts to enhance our programs. Field trips, guest visitors, and community projects expose children to real-world learning.</li>
+            <li *ngFor="let item of ('POLICIES.QUALITY_LIST' | translate)">{{ item }}</li>
           </ul>
-          <p class="policy-note">Our quality assurance policy is shared with staff and parents and is reviewed periodically to ensure we consistently meet and exceed the expectations of our students and families.</p>
+          <p class="policy-note">{{ 'POLICIES.QUALITY_NOTE' | translate }}</p>
         </div>
       </div>
 

@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
 
 * {
   margin: 0;
@@ -12,6 +13,49 @@ body {
   line-height: 1.6;
   color: #333;
   background-color: #ffffff;
+  transition: direction 0.3s ease;
+}
+
+/* RTL Support for Arabic */
+[dir="rtl"] {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
+  
+  .header-actions {
+    flex-direction: row-reverse;
+  }
+  
+  .nav-list {
+    flex-direction: row-reverse;
+  }
+  
+  .hero-content {
+    flex-direction: row-reverse;
+  }
+  
+  .cards-container,
+  .philosophy-grid,
+  .personality-cards,
+  .stations-grid,
+  .curriculum-grid {
+    direction: rtl;
+  }
+  
+  .footer-main {
+    direction: rtl;
+  }
+  
+  .contact-content {
+    flex-direction: row-reverse;
+  }
+}
+
+/* Language Toggle Button Styles */
+.lang-toggle {
+  font-family: 'Inter', sans-serif;
+}
+
+[dir="rtl"] .lang-toggle {
+  font-family: 'Noto Sans Arabic', 'Inter', sans-serif;
 }
 
 .main-content {
