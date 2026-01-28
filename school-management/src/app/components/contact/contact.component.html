@@ -1,0 +1,103 @@
+<section id="contact-section" class="contact">
+  <div class="container">
+    <div class="contact-content">
+      <!-- Left Side - Visit Us Today -->
+      <div class="visit-info">
+        <h2 class="visit-title">Visit Us Today</h2>
+        <p class="visit-description">
+          Located in the heart of the city, we are easily accessible for busy parents.
+        </p>
+
+        <!-- Contact Information -->
+        <div class="contact-details">
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M10 2C7.79086 2 6 3.79086 6 6C6 8.20914 7.79086 10 10 10C12.2091 10 14 8.20914 14 6C14 3.79086 12.2091 2 10 2Z" fill="white"/>
+                <path d="M10 12C6.68629 12 4 14.6863 4 18H16C16 14.6863 13.3137 12 10 12Z" fill="white"/>
+              </svg>
+            </div>
+            <span class="contact-text">City Center District, Main Street, Bldg 123</span>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 3C2 2.44772 2.44772 2 3 2H5.15287C5.64171 2 6.0589 2.35341 6.13927 2.8356L6.87858 7.27147C6.95075 7.70451 6.73206 8.13397 6.3394 8.3303L4.79126 9.10437C5.90756 11.8783 8.12168 14.0924 10.8956 15.2087L11.6697 13.6606C11.866 13.2679 12.2955 13.0492 12.7285 13.1214L17.1644 13.8607C17.6466 13.9411 18 14.3583 18 14.8471V17C18 17.5523 17.5523 18 17 18H15C7.8203 18 2 12.1797 2 5V3Z" fill="white"/>
+              </svg>
+            </div>
+            <span class="contact-text">+1 234 567 890</span>
+          </div>
+
+          <div class="contact-item">
+            <div class="contact-icon">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2.5 6.5L9.5 11.5C9.77614 11.6667 10.2239 11.6667 10.5 11.5L17.5 6.5M4 4H16C17.1046 4 18 4.89543 18 6V14C18 15.1046 17.1046 16 16 16H4C2.89543 16 2 15.1046 2 14V6C2 4.89543 2.89543 4 4 4Z" stroke="white" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <span class="contact-text">hello&#64;abadalshams.com</span>
+          </div>
+        </div>
+
+        <!-- Admissions Open -->
+        <div class="admissions-section">
+          <h3 class="admissions-title">Admissions Open for:</h3>
+          <div class="age-badges">
+            <span class="age-badge">Pre-KG</span>
+            <span class="age-badge">KG1</span>
+            <span class="age-badge">KG2</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Side - Inquiry Form -->
+      <div class="inquiry-form">
+        <h3 class="form-title">Inquiry Form</h3>
+        <form class="contact-form" (ngSubmit)="onSubmit()">
+          <div class="form-row">
+            <div class="form-group">
+              <input 
+                type="text" 
+                class="form-input" 
+                placeholder="Parent Name"
+                [(ngModel)]="formData.parentName"
+                name="parentName"
+                required>
+            </div>
+            <div class="form-group">
+              <input 
+                type="text" 
+                class="form-input" 
+                placeholder="Child's Age"
+                [(ngModel)]="formData.childAge"
+                name="childAge"
+                required>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <input 
+              type="email" 
+              class="form-input" 
+              placeholder="Email Address"
+              [(ngModel)]="formData.email"
+              name="email"
+              required>
+          </div>
+
+          <div class="form-group">
+            <textarea 
+              class="form-textarea" 
+              placeholder="Tell us about your child..."
+              [(ngModel)]="formData.message"
+              name="message"
+              rows="4"
+              required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="container">
+    <!-- Logo Section -->
+    <div class="logo">
+      <div class="logo-icon">
+        <!-- <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="16" cy="16" r="16" fill="#FF8C00"/>
+          <path d="M16 8L20 12H18V20H14V12H12L16 8Z" fill="white"/>
+        </svg> -->
+        ☀️
+      </div>
+      <span class="logo-text">Abad Alshams</span>
+    </div>
+
+    <!-- Navigation Menu -->
+    <nav class="nav-menu" [class.active]="isMenuOpen">
+      <ul class="nav-list">
+        <li class="nav-item">
+          <a href="#home" class="nav-link" (click)="scrollToSection('home', $event)">Home</a>
+        </li>
+        <li class="nav-item">
+          <a href="#about" class="nav-link" (click)="scrollToSection('about', $event)">About</a>
+        </li>
+        <li class="nav-item">
+          <a href="#curriculum" class="nav-link" (click)="scrollToSection('curriculum', $event)">Curriculum</a>
+        </li>
+        <li class="nav-item">
+          <a href="#facilities" class="nav-link" (click)="scrollToSection('facilities', $event)">Facilities</a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Join Us Button -->
+    <div class="header-actions">
+      <button class="join-btn" (click)="downloadEnrollmentForm()">JOIN US</button>
+      
+      <!-- Mobile Menu Toggle -->
+      <button class="menu-toggle" (click)="toggleMenu()" [class.active]="isMenuOpen">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </div>
+</header>

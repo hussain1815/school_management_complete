@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+.contact {
+  background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
+  padding: 100px 0;
+
+  @media (max-width: 768px) {
+    padding: 80px 0;
+  }
+
+  @media (max-width: 480px) {
+    padding: 60px 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    @media (max-width: 768px) {
+      padding: 0 16px;
+    }
+  }
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+
+  @media (max-width: 968px) {
+    grid-template-columns: 1fr;
+    gap: 0px; // Remove gap on mobile so cards are attached
+  }
+}
+
+// Left Side - Visit Info
+.visit-info {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+  border-radius: 24px;
+  padding: 48px 40px;
+  color: white;
+  box-shadow: 0 20px 60px rgba(255, 140, 0, 0.3);
+
+  @media (max-width: 968px) {
+    border-radius: 20px 20px 0 0; // Rounded top, flat bottom on mobile
+    box-shadow: 0 10px 30px rgba(255, 140, 0, 0.3);
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 32px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 32px 24px;
+  }
+
+  .visit-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    line-height: 1.2;
+
+    @media (max-width: 768px) {
+      font-size: 2rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.75rem;
+    }
+  }
+
+  .visit-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 40px;
+    opacity: 0.95;
+
+    @media (max-width: 768px) {
+      font-size: 1rem;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+// Contact Details
+.contact-details {
+  margin-bottom: 40px;
+
+  @media (max-width: 768px) {
+    margin-bottom: 32px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .contact-icon {
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      @media (max-width: 768px) {
+        width: 36px;
+        height: 36px;
+      }
+
+      svg {
+        width: 20px;
+        height: 20px;
+
+        @media (max-width: 768px) {
+          width: 18px;
+          height: 18px;
+        }
+      }
+    }
+
+    .contact-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      font-weight: 500;
+      line-height: 1.5;
+
+      @media (max-width: 768px) {
+        font-size: 0.95rem;
+      }
+    }
+  }
+}
+
+// Admissions Section
+.admissions-section {
+  .admissions-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    line-height: 1.3;
+
+    @media (max-width: 768px) {
+      font-size: 1.125rem;
+    }
+  }
+
+  .age-badges {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+
+    .age-badge {
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 20px;
+      padding: 8px 16px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      @media (max-width: 768px) {
+        padding: 6px 14px;
+        font-size: 0.8rem;
+      }
+    }
+  }
+}
+
+// Right Side - Inquiry Form
+.inquiry-form {
+  background: #ffffff;
+  border-radius: 24px;
+  padding: 48px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+
+  @media (max-width: 968px) {
+    border-radius: 0 0 20px 20px; // Flat top, rounded bottom on mobile
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 768px) {
+    padding: 40px 32px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 32px 24px;
+  }
+
+  .form-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1a365d;
+    margin-bottom: 32px;
+    line-height: 1.3;
+
+    @media (max-width: 768px) {
+      font-size: 1.3rem;
+      margin-bottom: 24px;
+    }
+  }
+}
+
+// Form Styles
+.contact-form {
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .form-input,
+  .form-textarea {
+    width: 100%;
+    padding: 16px 20px;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1a365d;
+    background-color: #F8FAFC;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+
+    &::placeholder {
+      color: #A0AEC0;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: #FF8C00;
+      background-color: #ffffff;
+      box-shadow: 0 0 0 3px rgba(255, 140, 0, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      padding: 14px 18px;
+      font-size: 0.95rem;
+    }
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    padding: 16px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 8px 25px rgba(255, 140, 0, 0.3);
+    margin-top: 8px;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(255, 140, 0, 0.4);
+      background: linear-gradient(135deg, #FFA500 0%, #FF8C00 100%);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+
+    @media (max-width: 768px) {
+      padding: 14px 20px;
+      font-size: 0.95rem;
+    }
+  }
+}
+
+// Animation for sections appearing
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.visit-info {
+  animation: slideInLeft 0.8s ease-out;
+}
+
+.inquiry-form {
+  animation: slideInRight 0.8s ease-out;
+  animation-delay: 0.2s;
+  animation-fill-mode: both;
+}
+
+// Responsive adjustments
+@media (max-width: 968px) {
+  .contact-content {
+    .visit-info {
+      order: 1; // Visit Us Today comes first on mobile
+      animation: slideInLeft 0.8s ease-out;
+      animation-delay: 0s;
+    }
+
+    .inquiry-form {
+      order: 2; // Inquiry Form comes second on mobile
+      animation: slideInRight 0.8s ease-out;
+      animation-delay: 0.2s;
+      animation-fill-mode: both;
+    }
+  }
+}
