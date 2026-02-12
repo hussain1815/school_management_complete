@@ -67,7 +67,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
     
     this.http.get<PaginatedResponse>(
-      `http://localhost:3000/api/v1/inquiries?page=${this.currentPage}&limit=10`,
+      `http://localhost:3000/api/v1/inquiries?page=${this.currentPage}&limit=12`,
       { headers: this.getAuthHeaders() }
     ).subscribe({
       next: (response) => {

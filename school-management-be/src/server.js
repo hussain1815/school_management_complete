@@ -1,13 +1,14 @@
 import express from "express";
 import cors from "cors";
 import inquiryRouter from "../apis/v1/inquiry.js";
+import authRouter from "../apis/v1/auth.js";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 // Enable CORS
 app.use(cors({
-  origin: "http://localhost:4200",
+  origin: process.env.CORS_ORIGIN || "http://localhost:4200",
   credentials: true
 }));
 
@@ -23,6 +24,7 @@ app.get('/health', (req, res) => {
 });
 
 // API routes
+app.use("/api/v1", authRouter);
 app.use("/api/v1", inquiryRouter);
 
 app.listen(PORT, () => {

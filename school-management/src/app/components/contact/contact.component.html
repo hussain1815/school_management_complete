@@ -53,6 +53,17 @@
       <!-- Right Side - Inquiry Form -->
       <div class="inquiry-form">
         <h3 class="form-title">Inquiry Form</h3>
+        
+        <!-- Success Message -->
+        <div *ngIf="successMessage" class="alert alert-success">
+          {{ successMessage }}
+        </div>
+
+        <!-- Error Message -->
+        <div *ngIf="errorMessage" class="alert alert-error">
+          {{ errorMessage }}
+        </div>
+
         <form class="contact-form" (ngSubmit)="onSubmit()">
           <div class="form-row">
             <div class="form-group">
@@ -62,15 +73,18 @@
                 placeholder="Parent Name"
                 [(ngModel)]="formData.parentName"
                 name="parentName"
+                [disabled]="isLoading"
                 required>
             </div>
             <div class="form-group">
               <input 
-                type="text" 
+                type="number" 
                 class="form-input" 
                 placeholder="Child's Age"
                 [(ngModel)]="formData.childAge"
                 name="childAge"
+                [disabled]="isLoading"
+                min="1"
                 required>
             </div>
           </div>
@@ -82,6 +96,7 @@
               placeholder="Email Address"
               [(ngModel)]="formData.email"
               name="email"
+              [disabled]="isLoading"
               required>
           </div>
 
@@ -92,10 +107,14 @@
               [(ngModel)]="formData.message"
               name="message"
               rows="4"
+              [disabled]="isLoading"
               required></textarea>
           </div>
 
-          <button type="submit" class="submit-btn">Send Message</button>
+          <button type="submit" class="submit-btn" [disabled]="isLoading">
+            <span *ngIf="!isLoading">Send Message</span>
+            <span *ngIf="isLoading">Sending...</span>
+          </button>
         </form>
       </div>
     </div>

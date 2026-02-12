@@ -100,47 +100,47 @@
           <p>There are no parent inquiries to display at the moment.</p>
         </div>
 
-        <!-- Inquiries List -->
-        <div *ngIf="!isLoading && inquiries.length > 0" class="inquiries-list">
+        <!-- Inquiries Grid -->
+        <div *ngIf="!isLoading && inquiries.length > 0" class="inquiries-grid">
           <div *ngFor="let inquiry of inquiries" class="inquiry-card">
-            <div class="inquiry-header">
-              <div class="inquiry-info">
-                <h3>{{ inquiry.parent_name }}</h3>
-                <div class="inquiry-meta">
-                  <span class="meta-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
-                    </svg>
-                    {{ inquiry.email }}
-                  </span>
-                  <span class="meta-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 4L12 5.5L9 4L3 7V9H21ZM21 10H3V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V10Z" fill="currentColor"/>
-                    </svg>
-                    Child Age: {{ inquiry.child_age }}
-                  </span>
-                  <span class="meta-item">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="currentColor"/>
-                    </svg>
-                    {{ formatDate(inquiry.createdAt) }}
-                  </span>
-                </div>
+            <div class="card-header">
+              <div class="parent-avatar">
+                {{ inquiry.parent_name.charAt(0).toUpperCase() }}
               </div>
-              
-              <div class="inquiry-actions">
-                <button class="btn-danger-small" (click)="deleteInquiry(inquiry.id)">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
-                  </svg>
-                  Delete
-                </button>
+              <div class="parent-info">
+                <h3>{{ inquiry.parent_name }}</h3>
+                <span class="child-age">Child Age: {{ inquiry.child_age }} years</span>
               </div>
             </div>
             
-            <div class="inquiry-message">
-              <h4>Message:</h4>
-              <p>{{ inquiry.inquiry_Message }}</p>
+            <div class="card-body">
+              <div class="info-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                </svg>
+                <span>{{ inquiry.email }}</span>
+              </div>
+              
+              <div class="info-row">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="currentColor"/>
+                </svg>
+                <span>{{ formatDate(inquiry.createdAt) }}</span>
+              </div>
+              
+              <div class="message-preview">
+                <h4>Message:</h4>
+                <p>{{ inquiry.inquiry_Message }}</p>
+              </div>
+            </div>
+            
+            <div class="card-footer">
+              <button class="btn-delete" (click)="deleteInquiry(inquiry.id)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
+                </svg>
+                Delete Inquiry
+              </button>
             </div>
           </div>
         </div>

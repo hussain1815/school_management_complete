@@ -10,11 +10,20 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Inquiry{ 
-  id Int @id @default(autoincrement()) 
-  parent_name String 
-  child_age Int 
-  email String 
+model Inquiry { 
+  id              Int      @id @default(autoincrement()) 
+  parent_name     String 
+  child_age       Int 
+  email           String 
   inquiry_Message String 
+  createdAt       DateTime @default(now())
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  username  String   @unique
+  email     String   @unique
+  password  String
+  role      String   @default("admin")
   createdAt DateTime @default(now())
 }

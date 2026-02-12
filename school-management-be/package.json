@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prisma:generate": "prisma generate --schema=./src/prisma/schema.prisma",
     "prisma:migrate": "prisma migrate dev --schema=./src/prisma/schema.prisma",
+    "seed:admin": "node scripts/seed-admin.js",
     "start": "node src/server.js",
     "dev": "node src/server.js"
   },
@@ -17,7 +18,9 @@
   "dependencies": {
     "@prisma/client": "^4.16.2",
     "express": "^5.2.1",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "bcryptjs": "^2.4.3",
+    "jsonwebtoken": "^9.0.2"
   },
   "devDependencies": {
     "prisma": "^4.16.2"
