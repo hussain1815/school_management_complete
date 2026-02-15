@@ -67,7 +67,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
     
     this.http.get<PaginatedResponse>(
-      `https://sunflowerskg.com:3000/api/v1/inquiries?page=${this.currentPage}&limit=12`,
+      `http://localhost:3000/api/v1/inquiries?page=${this.currentPage}&limit=12`,
       { headers: this.getAuthHeaders() }
     ).subscribe({
       next: (response) => {
@@ -91,7 +91,7 @@ export class AdminComponent implements OnInit {
       return;
     }
 
-    this.http.delete(`https://sunflowerskg.com:3000/api/v1/inquiries/${id}`, {
+    this.http.delete(`http://localhost:3000/api/v1/inquiries/${id}`, {
       headers: this.getAuthHeaders()
     }).subscribe({
       next: () => {
