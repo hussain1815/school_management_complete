@@ -32,7 +32,7 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.http.post<any>('http://localhost:3000/api/v1/auth/login', this.loginData)
+    this.http.post<any>('https://sunflowerskg.com:3000/api/v1/auth/login', this.loginData)
       .subscribe({
         next: (response) => {
           // Store the token
