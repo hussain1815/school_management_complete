@@ -87,19 +87,14 @@ export class AdminComponent implements OnInit {
   }
 
   deleteInquiry(id: number) {
-    if (!confirm('Are you sure you want to delete this inquiry?')) {
-      return;
-    }
-
     this.http.delete(`/api/v1/inquiries/${id}`, {
       headers: this.getAuthHeaders()
     }).subscribe({
       next: () => {
-        this.loadInquiries(); // Reload the list
+        this.loadInquiries();
       },
       error: (error) => {
         console.error('Error deleting inquiry:', error);
-        alert('Failed to delete inquiry');
       }
     });
   }
