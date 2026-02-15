@@ -60,7 +60,7 @@ export class ContactComponent {
     };
 
     // Send to backend
-    this.http.post('http://localhost:3000/api/v1/inquiries', inquiryData)
+    this.http.post('/api/v1/inquiries', inquiryData)
       .subscribe({
         next: (response: any) => {
           this.isLoading = false;
