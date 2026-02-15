@@ -313,6 +313,31 @@
         }
       }
     }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      margin-bottom: 15px;
+
+      .instagram-icon {
+        color: #CBD5E0;
+        flex-shrink: 0;
+        transition: color 0.2s;
+      }
+
+      &:hover {
+        .contact-text {
+          color: #FFA500;
+        }
+        .instagram-icon {
+          color: #E1306C;
+        }
+      }
+    }
   }
 
   .cta-section {
