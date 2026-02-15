@@ -36,6 +36,8 @@ export class AdminComponent implements OnInit {
   totalInquiries = 0;
   isLoading = false;
   user: any = null;
+  showDeleteModal = false;
+  deleteTargetId: number | null = null;
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -87,16 +89,31 @@ export class AdminComponent implements OnInit {
   }
 
   deleteInquiry(id: number) {
-    this.http.delete(`/api/v1/inquiries/${id}`, {
+    this.deleteTargetId = id;
+    this.showDeleteModal = true;
+  }
+
+  confirmDelete() {
+    if (this.deleteTargetId === null) return;
+    this.http.delete(`/api/v1/inquiries/${this.deleteTargetId}`, {
       headers: this.getAuthHeaders()
     }).subscribe({
       next: () => {
+        this.showDeleteModal = false;
+        this.deleteTargetId = null;
         this.loadInquiries();
       },
       error: (error) => {
         console.error('Error deleting inquiry:', error);
+        this.showDeleteModal = false;
+        this.deleteTargetId = null;
       }
     });
+  }
+
+  cancelDelete() {
+    this.showDeleteModal = false;
+    this.deleteTargetId = null;
   }
 
   nextPage() {
