@@ -8,7 +8,7 @@ services:
       - JWT_EXPIRES_IN=7d
       - PORT=3000
       - NODE_ENV=production
-      - CORS_ORIGIN=http://localhost
+      - CORS_ORIGIN=http://localhost:4200
     ports:
       - "3000:3000"
     restart: unless-stopped
@@ -17,7 +17,7 @@ services:
     build: ./school-management
     container_name: school-frontend
     ports:
-      - "80:80"
+      - "4200:4200"
     depends_on:
       - backend
     restart: unless-stopped

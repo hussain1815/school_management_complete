@@ -1,4 +1,4 @@
-FROM node:20-alpine AS build
+FROM node:20-alpine
 
 WORKDIR /app
 
@@ -6,13 +6,7 @@ COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npx ng build --configuration=production
 
-FROM nginx:alpine
+EXPOSE 4200
 
-COPY --from=build /app/dist/school-management/browser /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-
-EXPOSE 80
-
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["npx", "ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
