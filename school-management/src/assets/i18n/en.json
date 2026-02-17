@@ -5,7 +5,7 @@
     "ABOUT": "About",
     "CURRICULUM": "Curriculum",
     "FACILITIES": "Facilities",
-    "JOIN_US": "JOIN US"
+    "JOIN_US": "DOWNLOAD"
   },
   "HERO": {
     "TITLE": "Where Every Child",
@@ -121,7 +121,7 @@
     "PRE_KG": "Pre-KG",
     "KG1": "KG1",
     "KG2": "KG2",
-    "FORM_TITLE": "Inquiry Form",
+    "FORM_TITLE": "Contact Form",
     "PARENT_NAME": "Parent Name",
     "CHILD_AGE": "Child's Age",
     "EMAIL_ADDRESS": "Email Address",

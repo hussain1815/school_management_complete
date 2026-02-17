@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 interface Inquiry {
   id: number;
@@ -22,14 +24,24 @@ interface PaginatedResponse {
   };
 }
 
+interface News {
+  id: number;
+  content: string;
+  isActive: boolean;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, FormsModule],
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
+  activeTab: 'inquiries' | 'news' = 'inquiries';
   inquiries: Inquiry[] = [];
   currentPage = 1;
   totalPages = 1;
@@ -38,6 +50,18 @@ export class AdminComponent implements OnInit {
   user: any = null;
   showDeleteModal = false;
   deleteTargetId: number | null = null;
+  deleteType: 'inquiry' | 'news' = 'inquiry';
+
+  // News management
+  newsList: News[] = [];
+  isLoadingNews = false;
+  showNewsForm = false;
+  editingNews: News | null = null;
+  newsForm = {
+    content: '',
+    isActive: true,
+    order: 0
+  };
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -65,11 +89,18 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  switchTab(tab: 'inquiries' | 'news') {
+    this.activeTab = tab;
+    if (tab === 'news' && this.newsList.length === 0) {
+      this.loadNews();
+    }
+  }
+
   loadInquiries() {
     this.isLoading = true;
     
     this.http.get<PaginatedResponse>(
-      `/api/v1/inquiries?page=${this.currentPage}&limit=12`,
+      `${environment.apiUrl}/api/v1/inquiries?page=${this.currentPage}&limit=12`,
       { headers: this.getAuthHeaders() }
     ).subscribe({
       next: (response) => {
@@ -88,23 +119,132 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  loadNews() {
+    this.isLoadingNews = true;
+    
+    this.http.get<News[]>(
+      `${environment.apiUrl}/api/v1/news/all`,
+      { headers: this.getAuthHeaders() }
+    ).subscribe({
+      next: (news) => {
+        this.newsList = news;
+        this.isLoadingNews = false;
+      },
+      error: (error) => {
+        console.error('Error loading news:', error);
+        if (error.status === 401) {
+          this.logout();
+        }
+        this.isLoadingNews = false;
+      }
+    });
+  }
+
+  toggleNewsForm() {
+    this.showNewsForm = !this.showNewsForm;
+    if (!this.showNewsForm) {
+      this.cancelNewsEdit();
+    }
+  }
+
+  editNews(news: News) {
+    this.editingNews = news;
+    this.newsForm = {
+      content: news.content,
+      isActive: news.isActive,
+      order: news.order
+    };
+    this.showNewsForm = true;
+    // Scroll to form
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  saveNews() {
+    if (!this.newsForm.content.trim()) {
+      return;
+    }
+
+    // Auto-assign order if creating new news
+    if (!this.editingNews) {
+      this.newsForm.order = this.newsList.length + 1;
+    }
+
+    if (this.editingNews) {
+      // Update existing news
+      this.http.put<News>(
+        `${environment.apiUrl}/api/v1/news/${this.editingNews.id}`,
+        this.newsForm,
+        { headers: this.getAuthHeaders() }
+      ).subscribe({
+        next: () => {
+          this.loadNews();
+          this.cancelNewsEdit();
+        },
+        error: (error) => {
+          console.error('Error updating news:', error);
+        }
+      });
+    } else {
+      // Create new news
+      this.http.post<News>(
+        `${environment.apiUrl}/api/v1/news`,
+        this.newsForm,
+        { headers: this.getAuthHeaders() }
+      ).subscribe({
+        next: () => {
+          this.loadNews();
+          this.cancelNewsEdit();
+        },
+        error: (error) => {
+          console.error('Error creating news:', error);
+        }
+      });
+    }
+  }
+
+  cancelNewsEdit() {
+    this.showNewsForm = false;
+    this.editingNews = null;
+    this.newsForm = {
+      content: '',
+      isActive: true,
+      order: 0
+    };
+  }
+
+  deleteNews(id: number) {
+    this.deleteTargetId = id;
+    this.deleteType = 'news';
+    this.showDeleteModal = true;
+  }
+
   deleteInquiry(id: number) {
     this.deleteTargetId = id;
+    this.deleteType = 'inquiry';
     this.showDeleteModal = true;
   }
 
   confirmDelete() {
     if (this.deleteTargetId === null) return;
-    this.http.delete(`/api/v1/inquiries/${this.deleteTargetId}`, {
+
+    const url = this.deleteType === 'news' 
+      ? `${environment.apiUrl}/api/v1/news/${this.deleteTargetId}`
+      : `${environment.apiUrl}/api/v1/inquiries/${this.deleteTargetId}`;
+
+    this.http.delete(url, {
       headers: this.getAuthHeaders()
     }).subscribe({
       next: () => {
         this.showDeleteModal = false;
         this.deleteTargetId = null;
-        this.loadInquiries();
+        if (this.deleteType === 'news') {
+          this.loadNews();
+        } else {
+          this.loadInquiries();
+        }
       },
       error: (error) => {
-        console.error('Error deleting inquiry:', error);
+        console.error(`Error deleting ${this.deleteType}:`, error);
         this.showDeleteModal = false;
         this.deleteTargetId = null;
       }

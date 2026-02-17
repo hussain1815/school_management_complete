@@ -33,6 +33,21 @@
   text-decoration: none;
   cursor: pointer;
 
+  img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+
+    @media (max-width: 768px) {
+      height: 40px;
+    }
+
+    @media (max-width: 480px) {
+      height: 35px;
+    }
+  }
+
   .logo-icon {
     width: 32px;
     height: 32px;

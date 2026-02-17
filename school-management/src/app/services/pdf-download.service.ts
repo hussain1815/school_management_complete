@@ -93,6 +93,15 @@ export class PdfDownloadService {
           .header { 
             text-align: center; 
             margin-bottom: 20px; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+          }
+          .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
           }
           .school-name { 
             font-size: 16px; 
@@ -245,7 +254,7 @@ export class PdfDownloadService {
       <!-- Page 1 -->
       <div class="page">
         <div class="header">
-          <div class="school-name">ABAD ALSHAMS KINDERGARTEN</div>
+          <img src="assets/logo.png" alt="Abad Alshams Logo" class="logo-img">
           <div class="form-title">ENROLMENT FORM</div>
         </div>
         
@@ -419,7 +428,7 @@ export class PdfDownloadService {
       <!-- Page 2 -->
       <div class="page">
         <div class="header">
-          <div class="school-name">ABAD ALSHAMS KINDERGARTEN</div>
+          <img src="assets/logo.png" alt="Abad Alshams Logo" class="logo-img">
           <div class="form-title">ENROLMENT FORM</div>
         </div>
         
@@ -556,7 +565,7 @@ export class PdfDownloadService {
       <!-- Page 3 -->
       <div class="page">
         <div class="header">
-          <div class="school-name">ABAD ALSHAMS KINDERGARTEN</div>
+          <img src="assets/logo.png" alt="Abad Alshams Logo" class="logo-img">
           <div class="form-title">ENROLMENT FORM</div>
         </div>
         
@@ -717,7 +726,7 @@ export class PdfDownloadService {
       <!-- Page 4 -->
       <div class="page">
         <div class="header">
-          <div class="school-name">ABAD ALSHAMS KINDERGARTEN</div>
+          <img src="assets/logo.png" alt="Abad Alshams Logo" class="logo-img">
           <div class="form-title">ENROLMENT FORM</div>
         </div>
         

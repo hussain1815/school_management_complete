@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-contact',
@@ -60,7 +61,7 @@ export class ContactComponent {
     };
 
     // Send to backend
-    this.http.post('/api/v1/inquiries', inquiryData)
+    this.http.post(`${environment.apiUrl}/api/v1/inquiries`, inquiryData)
       .subscribe({
         next: (response: any) => {
           this.isLoading = false;

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { NewsTickerComponent } from '../news-ticker/news-ticker.component';
 import { HeroComponent } from '../hero/hero.component';
 import { WelcomeComponent } from '../welcome/welcome.component';
 import { PhilosophyComponent } from '../philosophy/philosophy.component';
@@ -12,7 +13,7 @@ import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-home',
-  imports: [HeaderComponent, HeroComponent, WelcomeComponent, PhilosophyComponent, PersonalityComponent, ExperienceComponent, CurriculumComponent, TestimonialsComponent, ContactComponent, FooterComponent],
+  imports: [HeaderComponent, NewsTickerComponent, HeroComponent, WelcomeComponent, PhilosophyComponent, PersonalityComponent, ExperienceComponent, CurriculumComponent, TestimonialsComponent, ContactComponent, FooterComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

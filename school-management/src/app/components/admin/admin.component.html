@@ -41,137 +41,249 @@
     </div>
   </header>
 
+  <!-- Tabs -->
+  <div class="tabs-container">
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'inquiries'"
+      (click)="switchTab('inquiries')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 6H16L14 4H10L8 6H4C2.9 6 2 6.9 2 8V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V8C22 6.9 21.1 6 20 6Z" fill="currentColor"/>
+      </svg>
+      Inquiries
+    </button>
+    <button 
+      class="tab-btn" 
+      [class.active]="activeTab === 'news'"
+      (click)="switchTab('news')">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V5H19V19ZM7 10H9V17H7V10ZM11 7H13V17H11V7ZM15 13H17V17H15V13Z" fill="currentColor"/>
+      </svg>
+      News Ticker
+    </button>
+  </div>
+
   <!-- Main Content -->
   <main class="admin-main">
     <div class="content-wrapper">
-      <!-- Stats Cards -->
-      <div class="stats-grid">
-        <div class="stat-card">
-          <div class="stat-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M20 6H16L14 4H10L8 6H4C2.9 6 2 6.9 2 8V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V8C22 6.9 21.1 6 20 6ZM20 19H4V8H20V19ZM12 9C10.34 9 9 10.34 9 12C9 13.66 10.34 15 12 15C13.66 15 15 13.66 15 12C15 10.34 13.66 9 12 9Z" fill="currentColor"/>
-            </svg>
+      
+      <!-- Inquiries Tab -->
+      <div *ngIf="activeTab === 'inquiries'">
+        <!-- Stats Cards -->
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 6H16L14 4H10L8 6H4C2.9 6 2 6.9 2 8V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V8C22 6.9 21.1 6 20 6Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <h3>Total Inquiries</h3>
+              <p class="stat-number">{{ totalInquiries }}</p>
+            </div>
           </div>
-          <div class="stat-content">
-            <h3>Total Inquiries</h3>
-            <p class="stat-number">{{ totalInquiries }}</p>
+
+          <div class="stat-card">
+            <div class="stat-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="currentColor"/>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <h3>Current Page</h3>
+              <p class="stat-number">{{ currentPage }} / {{ totalPages }}</p>
+            </div>
           </div>
         </div>
 
-        <div class="stat-card">
-          <div class="stat-icon">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M12 2L13.09 8.26L22 9L13.09 9.74L12 16L10.91 9.74L2 9L10.91 8.26L12 2Z" fill="currentColor"/>
-            </svg>
+        <!-- Inquiries Section -->
+        <div class="section">
+          <div class="section-header">
+            <h2>Parent Inquiries</h2>
+            <button class="btn-primary" (click)="loadInquiries()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.73 20 18.84 17.45 19.73 14H17.65C16.83 16.33 14.61 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6C13.66 6 15.14 6.69 16.22 7.78L13 11H20V4L17.65 6.35Z" fill="currentColor"/>
+              </svg>
+              Refresh
+            </button>
           </div>
-          <div class="stat-content">
-            <h3>Current Page</h3>
-            <p class="stat-number">{{ currentPage }} / {{ totalPages }}</p>
+
+          <div *ngIf="isLoading" class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading inquiries...</p>
+          </div>
+
+          <div *ngIf="!isLoading && inquiries.length === 0" class="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20 6H16L14 4H10L8 6H4C2.9 6 2 6.9 2 8V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V8C22 6.9 21.1 6 20 6Z" fill="currentColor"/>
+            </svg>
+            <h3>No Inquiries Found</h3>
+            <p>There are no parent inquiries to display at the moment.</p>
+          </div>
+
+          <div *ngIf="!isLoading && inquiries.length > 0" class="inquiries-grid">
+            <div *ngFor="let inquiry of inquiries" class="inquiry-card">
+              <div class="card-header">
+                <div class="parent-avatar">
+                  {{ inquiry.parent_name.charAt(0).toUpperCase() }}
+                </div>
+                <div class="parent-info">
+                  <h3>{{ inquiry.parent_name }}</h3>
+                  <span class="child-age">Child Age: {{ inquiry.child_age }} years</span>
+                </div>
+              </div>
+              
+              <div class="card-body">
+                <div class="info-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
+                  </svg>
+                  <span>{{ inquiry.email }}</span>
+                </div>
+                
+                <div class="info-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="currentColor"/>
+                  </svg>
+                  <span>{{ formatDate(inquiry.createdAt) }}</span>
+                </div>
+                
+                <div class="message-preview">
+                  <h4>Message:</h4>
+                  <p>{{ inquiry.inquiry_Message }}</p>
+                </div>
+              </div>
+              
+              <div class="card-footer">
+                <button class="btn-delete" (click)="deleteInquiry(inquiry.id)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
+                  </svg>
+                  Delete Inquiry
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div *ngIf="!isLoading && totalPages > 1" class="pagination">
+            <button 
+              class="btn-secondary" 
+              [disabled]="currentPage === 1" 
+              (click)="prevPage()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" fill="currentColor"/>
+              </svg>
+              Previous
+            </button>
+            
+            <span class="pagination-info">
+              Page {{ currentPage }} of {{ totalPages }}
+            </span>
+            
+            <button 
+              class="btn-secondary" 
+              [disabled]="currentPage === totalPages" 
+              (click)="nextPage()">
+              Next
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z" fill="currentColor"/>
+              </svg>
+            </button>
           </div>
         </div>
       </div>
 
-      <!-- Inquiries Section -->
-      <div class="section">
-        <div class="section-header">
-          <h2>Parent Inquiries</h2>
-          <button class="btn-primary" (click)="loadInquiries()">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.65 6.35C16.2 4.9 14.21 4 12 4C7.58 4 4 7.58 4 12C4 16.42 7.58 20 12 20C15.73 20 18.84 17.45 19.73 14H17.65C16.83 16.33 14.61 18 12 18C8.69 18 6 15.31 6 12C6 8.69 8.69 6 12 6C13.66 6 15.14 6.69 16.22 7.78L13 11H20V4L17.65 6.35Z" fill="currentColor"/>
+      <!-- News Tab -->
+      <div *ngIf="activeTab === 'news'">
+        <div class="section">
+          <div class="section-header">
+            <h2>News Ticker Management</h2>
+            <button class="btn-primary" (click)="toggleNewsForm()" *ngIf="!showNewsForm">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 13H13V19H11V13H5V11H11V5H13V11H19V13Z" fill="currentColor"/>
+              </svg>
+              Add News
+            </button>
+          </div>
+
+          <!-- Add/Edit News Form -->
+          <div class="news-form-card" *ngIf="showNewsForm">
+            <h3>{{ editingNews ? 'Edit News Item' : 'Add New News Item' }}</h3>
+            <form (ngSubmit)="saveNews()">
+              <div class="form-group">
+                <label>Content</label>
+                <textarea 
+                  [(ngModel)]="newsForm.content" 
+                  name="content"
+                  rows="3"
+                  required
+                  placeholder="Enter news content..."></textarea>
+              </div>
+              <div class="form-group checkbox-group">
+                <label class="checkbox-label">
+                  <input 
+                    type="checkbox" 
+                    [(ngModel)]="newsForm.isActive" 
+                    name="isActive">
+                  <span>Active</span>
+                </label>
+              </div>
+              <div class="form-actions">
+                <button type="button" class="btn-secondary" (click)="cancelNewsEdit()">Cancel</button>
+                <button type="submit" class="btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 3H5C3.89 3 3 3.9 3 5V19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V7L17 3ZM19 19H5V5H16.17L19 7.83V19ZM12 12C10.34 12 9 13.34 9 15C9 16.66 10.34 18 12 18C13.66 18 15 16.66 15 15C15 13.34 13.66 12 12 12ZM6 6H15V10H6V6Z" fill="currentColor"/>
+                  </svg>
+                  Save News
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div *ngIf="isLoadingNews" class="loading-state">
+            <div class="spinner"></div>
+            <p>Loading news...</p>
+          </div>
+
+          <div *ngIf="!isLoadingNews && newsList.length === 0" class="empty-state">
+            <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5C3.9 3 3 3.9 3 5V19C3 20.1 3.9 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3Z" fill="currentColor"/>
             </svg>
-            Refresh
-          </button>
-        </div>
+            <h3>No News Items</h3>
+            <p>Add your first news item to display on the ticker!</p>
+          </div>
 
-        <!-- Loading State -->
-        <div *ngIf="isLoading" class="loading-state">
-          <div class="spinner"></div>
-          <p>Loading inquiries...</p>
-        </div>
-
-        <!-- Empty State -->
-        <div *ngIf="!isLoading && inquiries.length === 0" class="empty-state">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M20 6H16L14 4H10L8 6H4C2.9 6 2 6.9 2 8V19C2 20.1 2.9 21 4 21H20C21.1 21 22 20.1 22 19V8C22 6.9 21.1 6 20 6ZM20 19H4V8H20V19Z" fill="currentColor"/>
-          </svg>
-          <h3>No Inquiries Found</h3>
-          <p>There are no parent inquiries to display at the moment.</p>
-        </div>
-
-        <!-- Inquiries Grid -->
-        <div *ngIf="!isLoading && inquiries.length > 0" class="inquiries-grid">
-          <div *ngFor="let inquiry of inquiries" class="inquiry-card">
-            <div class="card-header">
-              <div class="parent-avatar">
-                {{ inquiry.parent_name.charAt(0).toUpperCase() }}
+          <div *ngIf="!isLoadingNews && newsList.length > 0" class="news-list">
+            <div *ngFor="let news of newsList" class="news-item-card">
+              <div class="news-item-header">
+                <span class="news-badge" [class.active]="news.isActive" [class.inactive]="!news.isActive">
+                  {{ news.isActive ? 'Active' : 'Inactive' }}
+                </span>
+                <span class="news-order">Order: {{ news.order }}</span>
               </div>
-              <div class="parent-info">
-                <h3>{{ inquiry.parent_name }}</h3>
-                <span class="child-age">Child Age: {{ inquiry.child_age }} years</span>
+              <div class="news-item-content">
+                <p>{{ news.content }}</p>
+                <small>Created: {{ formatDate(news.createdAt) }}</small>
               </div>
-            </div>
-            
-            <div class="card-body">
-              <div class="info-row">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M20 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V6C22 4.9 21.1 4 20 4ZM20 8L12 13L4 8V6L12 11L20 6V8Z" fill="currentColor"/>
-                </svg>
-                <span>{{ inquiry.email }}</span>
+              <div class="news-item-actions">
+                <button class="btn-edit" (click)="editNews(news)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3 17.25V21H6.75L17.81 9.94L14.06 6.19L3 17.25ZM20.71 7.04C21.1 6.65 21.1 6.02 20.71 5.63L18.37 3.29C17.98 2.9 17.35 2.9 16.96 3.29L15.13 5.12L18.88 8.87L20.71 7.04Z" fill="currentColor"/>
+                  </svg>
+                  Edit
+                </button>
+                <button class="btn-delete" (click)="deleteNews(news.id)">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
+                  </svg>
+                  Delete
+                </button>
               </div>
-              
-              <div class="info-row">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M9 11H7V9H9V11ZM13 11H11V9H13V11ZM17 11H15V9H17V11ZM19 3H18V1H16V3H8V1H6V3H5C3.89 3 3.01 3.9 3.01 5L3 19C3 20.1 3.89 21 5 21H19C20.1 21 21 20.1 21 19V5C21 3.9 20.1 3 19 3ZM19 19H5V8H19V19Z" fill="currentColor"/>
-                </svg>
-                <span>{{ formatDate(inquiry.createdAt) }}</span>
-              </div>
-              
-              <div class="message-preview">
-                <h4>Message:</h4>
-                <p>{{ inquiry.inquiry_Message }}</p>
-              </div>
-            </div>
-            
-            <div class="card-footer">
-              <button class="btn-delete" (click)="deleteInquiry(inquiry.id)">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
-                </svg>
-                Delete Inquiry
-              </button>
             </div>
           </div>
         </div>
-
-        <!-- Pagination -->
-        <div *ngIf="!isLoading && totalPages > 1" class="pagination">
-          <button 
-            class="btn-secondary" 
-            [disabled]="currentPage === 1" 
-            (click)="prevPage()"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M15.41 7.41L14 6L8 12L14 18L15.41 16.59L10.83 12L15.41 7.41Z" fill="currentColor"/>
-            </svg>
-            Previous
-          </button>
-          
-          <span class="pagination-info">
-            Page {{ currentPage }} of {{ totalPages }}
-          </span>
-          
-          <button 
-            class="btn-secondary" 
-            [disabled]="currentPage === totalPages" 
-            (click)="nextPage()"
-          >
-            Next
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M8.59 16.59L10 18L16 12L10 6L8.59 7.41L13.17 12L8.59 16.59Z" fill="currentColor"/>
-            </svg>
-          </button>
-        </div>
       </div>
+
     </div>
   </main>
 
@@ -183,8 +295,8 @@
           <path d="M6 19C6 20.1 6.9 21 8 21H16C17.1 21 18 20.1 18 19V7H6V19ZM19 4H15.5L14.5 3H9.5L8.5 4H5V6H19V4Z" fill="currentColor"/>
         </svg>
       </div>
-      <h3 class="modal-title">Delete Inquiry</h3>
-      <p class="modal-text">Are you sure you want to delete this inquiry? This action cannot be undone.</p>
+      <h3 class="modal-title">Delete {{ deleteType === 'news' ? 'News Item' : 'Inquiry' }}</h3>
+      <p class="modal-text">Are you sure you want to delete this {{ deleteType === 'news' ? 'news item' : 'inquiry' }}? This action cannot be undone.</p>
       <div class="modal-actions">
         <button class="modal-btn cancel-btn" (click)="cancelDelete()">Cancel</button>
         <button class="modal-btn delete-btn" (click)="confirmDelete()">Delete</button>
