@@ -12,32 +12,48 @@
           <p [innerHTML]="'WELCOME.INTRO' | translate"></p>
         </div>
 
-        <div class="highlight-section">
-          <h3 class="section-title">{{ 'WELCOME.APPROACH_TITLE' | translate }}</h3>
-          <p [innerHTML]="'WELCOME.APPROACH_TEXT' | translate"></p>
+        <!-- Preview content (always visible) -->
+        <div class="preview-content">
+          <p [innerHTML]="'WELCOME.PREVIEW' | translate"></p>
         </div>
 
-        <div class="highlight-section">
-          <h3 class="section-title">{{ 'WELCOME.TEAM_TITLE' | translate }}</h3>
-          <p [innerHTML]="'WELCOME.TEAM_TEXT' | translate"></p>
-        </div>
-
-        <div class="highlight-section">
-          <h3 class="section-title">{{ 'WELCOME.ENVIRONMENT_TITLE' | translate }}</h3>
-          <p [innerHTML]="'WELCOME.ENVIRONMENT_TEXT' | translate"></p>
-        </div>
-
-        <div class="methodology-highlight">
-          <div class="methodology-icon">🎨</div>
-          <p [innerHTML]="'WELCOME.METHODOLOGY_TEXT' | translate"></p>
-        </div>
-
-        <div class="closing-message">
-          <p>{{ 'WELCOME.CLOSING' | translate }}</p>
-          
-          <div class="contact-note">
-            <p [innerHTML]="'WELCOME.CONTACT_NOTE' | translate"></p>
+        <!-- Expandable content -->
+        <div class="expandable-content" [class.expanded]="isExpanded">
+          <div class="highlight-section">
+            <h3 class="section-title">{{ 'WELCOME.APPROACH_TITLE' | translate }}</h3>
+            <p [innerHTML]="'WELCOME.APPROACH_TEXT' | translate"></p>
           </div>
+
+          <div class="highlight-section">
+            <h3 class="section-title">{{ 'WELCOME.TEAM_TITLE' | translate }}</h3>
+            <p [innerHTML]="'WELCOME.TEAM_TEXT' | translate"></p>
+          </div>
+
+          <div class="highlight-section">
+            <h3 class="section-title">{{ 'WELCOME.ENVIRONMENT_TITLE' | translate }}</h3>
+            <p [innerHTML]="'WELCOME.ENVIRONMENT_TEXT' | translate"></p>
+          </div>
+
+          <div class="methodology-highlight">
+            <div class="methodology-icon">🎨</div>
+            <p [innerHTML]="'WELCOME.METHODOLOGY_TEXT' | translate"></p>
+          </div>
+
+          <div class="closing-message">
+            <p>{{ 'WELCOME.CLOSING' | translate }}</p>
+            
+            <div class="contact-note">
+              <p [innerHTML]="'WELCOME.CONTACT_NOTE' | translate"></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Show More/Less Button -->
+        <div class="toggle-button-container">
+          <button class="toggle-button" (click)="toggleContent()">
+            {{ isExpanded ? ('WELCOME.SHOW_LESS' | translate) : ('WELCOME.SHOW_MORE' | translate) }}
+            <span class="arrow" [class.rotated]="isExpanded">▼</span>
+          </button>
         </div>
       </div>
     </div>

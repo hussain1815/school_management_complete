@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-welcome',
-  imports: [TranslateModule],
+  imports: [CommonModule, TranslateModule],
   templateUrl: './welcome.component.html',
   styleUrl: './welcome.component.scss'
 })
 export class WelcomeComponent {
+  isExpanded = false;
 
+  toggleContent() {
+    this.isExpanded = !this.isExpanded;
+  }
 }
