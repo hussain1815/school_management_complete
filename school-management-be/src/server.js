@@ -9,8 +9,22 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Enable CORS
+const allowedOrigins = [
+  process.env.CORS_ORIGIN || "http://localhost",
+  "http://localhost:4200",
+  "http://localhost:80",
+  "https://be.sunflowerskg.com",
+  "https://sunflowerskg.com"
+];
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || "http://localhost:4200",||"be.sunflowerskg.com",||"sunflowerskg.com"
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 

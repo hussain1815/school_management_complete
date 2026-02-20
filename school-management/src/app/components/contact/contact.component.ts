@@ -61,7 +61,7 @@ export class ContactComponent {
     };
 
     // Send to backend
-    this.http.post(`${environment.apiUrl}/api/v1/inquiries`, inquiryData)
+    this.http.post(`${environment.apiUrl}/inquiries`, inquiryData)
       .subscribe({
         next: (response: any) => {
           this.isLoading = false;

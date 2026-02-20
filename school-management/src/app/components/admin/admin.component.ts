@@ -100,7 +100,7 @@ export class AdminComponent implements OnInit {
     this.isLoading = true;
     
     this.http.get<PaginatedResponse>(
-      `${environment.apiUrl}/api/v1/inquiries?page=${this.currentPage}&limit=12`,
+      `${environment.apiUrl}/inquiries?page=${this.currentPage}&limit=12`,
       { headers: this.getAuthHeaders() }
     ).subscribe({
       next: (response) => {
@@ -123,7 +123,7 @@ export class AdminComponent implements OnInit {
     this.isLoadingNews = true;
     
     this.http.get<News[]>(
-      `${environment.apiUrl}/api/v1/news/all`,
+      `${environment.apiUrl}/news/all`,
       { headers: this.getAuthHeaders() }
     ).subscribe({
       next: (news) => {
@@ -172,7 +172,7 @@ export class AdminComponent implements OnInit {
     if (this.editingNews) {
       // Update existing news
       this.http.put<News>(
-        `${environment.apiUrl}/api/v1/news/${this.editingNews.id}`,
+        `${environment.apiUrl}/news/${this.editingNews.id}`,
         this.newsForm,
         { headers: this.getAuthHeaders() }
       ).subscribe({
@@ -187,7 +187,7 @@ export class AdminComponent implements OnInit {
     } else {
       // Create new news
       this.http.post<News>(
-        `${environment.apiUrl}/api/v1/news`,
+        `${environment.apiUrl}/news`,
         this.newsForm,
         { headers: this.getAuthHeaders() }
       ).subscribe({
@@ -228,8 +228,8 @@ export class AdminComponent implements OnInit {
     if (this.deleteTargetId === null) return;
 
     const url = this.deleteType === 'news' 
-      ? `${environment.apiUrl}/api/v1/news/${this.deleteTargetId}`
-      : `${environment.apiUrl}/api/v1/inquiries/${this.deleteTargetId}`;
+      ? `${environment.apiUrl}/news/${this.deleteTargetId}`
+      : `${environment.apiUrl}/inquiries/${this.deleteTargetId}`;
 
     this.http.delete(url, {
       headers: this.getAuthHeaders()

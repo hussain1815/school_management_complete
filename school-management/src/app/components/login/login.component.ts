@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'app-login',
@@ -32,7 +33,7 @@ export class LoginComponent {
     this.isLoading = true;
     this.errorMessage = '';
 
-    this.http.post<any>('/api/v1/auth/login', this.loginData)
+    this.http.post<any>(`${environment.apiUrl}/auth/login`, this.loginData)
       .subscribe({
         next: (response) => {
           // Store the token

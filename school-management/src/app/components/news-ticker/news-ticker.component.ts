@@ -26,7 +26,7 @@ export class NewsTickerComponent implements OnInit {
   }
 
   loadNews() {
-    this.http.get<News[]>(`${environment.apiUrl}/api/v1/news`).subscribe({
+    this.http.get<News[]>(`${environment.apiUrl}/news`).subscribe({
       next: (newsItems) => {
         if (newsItems && newsItems.length > 0) {
           this.news = newsItems.map(item => item.content);

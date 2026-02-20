@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-  apiUrl: 'be.sunflowerskg.com'
+  apiUrl: 'https://be.sunflowerskg.com/api/v1'
 };
