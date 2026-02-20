@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3000;
 
 // Enable CORS
 app.use(cors({
-  origin: process.env.CORS_ORIGIN || "http://localhost:4200",
+  origin: process.env.CORS_ORIGIN || "http://localhost:4200",||"be.sunflowerskg.com",||"sunflowerskg.com"
   credentials: true
 }));
 
