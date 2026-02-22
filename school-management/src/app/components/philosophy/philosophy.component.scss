@@ -1,38 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+﻿@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 .philosophy {
   background: linear-gradient(135deg, #F8FAFC 0%, #FFFFFF 100%);
   padding: 100px 0;
   position: relative;
-
-  @media (max-width: 768px) {
-    padding: 80px 0;
-  }
-
-  @media (max-width: 480px) {
-    padding: 60px 0;
-  }
-
+  @media (max-width: 768px) { padding: 80px 0; }
+  @media (max-width: 480px) { padding: 60px 0; }
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-
-    @media (max-width: 768px) {
-      padding: 0 16px;
-    }
+    @media (max-width: 768px) { padding: 0 16px; }
   }
 }
-
-// Section Header
 .section-header {
   text-align: center;
   margin-bottom: 60px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 50px;
-  }
-
+  @media (max-width: 768px) { margin-bottom: 50px; }
   .section-title {
     font-family: 'Inter', sans-serif;
     font-size: 2.75rem;
@@ -40,44 +24,24 @@
     color: #1a365d;
     margin-bottom: 16px;
     line-height: 1.2;
-
-    @media (max-width: 1024px) {
-      font-size: 2.5rem;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.75rem;
-    }
+    @media (max-width: 1024px) { font-size: 2.5rem; }
+    @media (max-width: 768px) { font-size: 2rem; margin-bottom: 12px; }
+    @media (max-width: 480px) { font-size: 1.75rem; }
   }
-
   .section-subtitle {
     font-family: 'Inter', sans-serif;
     font-size: 1.125rem;
     font-weight: 400;
     color: #718096;
     line-height: 1.6;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-    }
+    @media (max-width: 768px) { font-size: 1rem; }
   }
 }
-
-// Philosophy Introduction
 .philosophy-intro {
   max-width: 600px;
   margin: 0 auto 50px auto;
   text-align: center;
-
-  @media (max-width: 768px) {
-    margin-bottom: 40px;
-  }
-
+  @media (max-width: 768px) { margin-bottom: 40px; }
   p {
     font-family: 'Inter', sans-serif;
     font-size: 1.2rem;
@@ -85,32 +49,16 @@
     line-height: 1.7;
     color: #2D3748;
     margin: 0;
-
-    @media (max-width: 768px) {
-      font-size: 1.1rem;
-    }
+    @media (max-width: 768px) { font-size: 1.1rem; }
   }
 }
-
-// Philosophy Grid
 .philosophy-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 30px;
-
-  @media (max-width: 1024px) {
-    gap: 24px;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 20px;
-    max-width: 600px;
-    margin: 0 auto;
-  }
+  @media (max-width: 1024px) { gap: 24px; }
+  @media (max-width: 768px) { grid-template-columns: 1fr; gap: 20px; max-width: 600px; margin: 0 auto; }
 }
-
-// Individual Card Styles
 .philosophy-card {
   background: #ffffff;
   border-radius: 20px;
@@ -120,47 +68,38 @@
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
-  border-top: 4px solid transparent;
-
+  border-top: 4px solid #228848;
+  cursor: pointer;
+  animation: fadeInUp 0.6s ease-out;
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #228848, #2ea85a);
+  }
   &:hover {
     transform: translateY(-10px);
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(135deg, #f0f9f3 0%, #FFFFFF 100%);
   }
-
-  @media (max-width: 768px) {
-    padding: 30px 25px;
-    border-radius: 16px;
-  }
-
-  @media (max-width: 480px) {
-    padding: 25px 20px;
-  }
-
+  @media (max-width: 768px) { padding: 30px 25px; border-radius: 16px; }
+  @media (max-width: 480px) { padding: 25px 20px; }
   .card-header {
     display: flex;
     align-items: center;
     gap: 15px;
     margin-bottom: 20px;
-
-    @media (max-width: 480px) {
-      gap: 12px;
-      margin-bottom: 18px;
-    }
-
+    @media (max-width: 480px) { gap: 12px; margin-bottom: 18px; }
     .card-icon {
       font-size: 2.2rem;
       flex-shrink: 0;
       transition: transform 0.3s ease;
-
-      @media (max-width: 768px) {
-        font-size: 2rem;
-      }
-
-      @media (max-width: 480px) {
-        font-size: 1.8rem;
-      }
+      @media (max-width: 768px) { font-size: 2rem; }
+      @media (max-width: 480px) { font-size: 1.8rem; }
     }
-
     .card-title {
       font-family: 'Inter', sans-serif;
       font-size: 1.4rem;
@@ -168,21 +107,11 @@
       line-height: 1.3;
       margin: 0;
       color: #1a365d;
-
-      @media (max-width: 768px) {
-        font-size: 1.3rem;
-      }
-
-      @media (max-width: 480px) {
-        font-size: 1.2rem;
-      }
+      @media (max-width: 768px) { font-size: 1.3rem; }
+      @media (max-width: 480px) { font-size: 1.2rem; }
     }
   }
-
-  &:hover .card-icon {
-    transform: scale(1.1) rotate(5deg);
-  }
-
+  &:hover .card-icon { transform: scale(1.1) rotate(5deg); }
   .card-description {
     font-family: 'Inter', sans-serif;
     font-size: 1rem;
@@ -190,230 +119,33 @@
     line-height: 1.7;
     color: #4A5568;
     margin: 0;
-
-    @media (max-width: 768px) {
-      font-size: 0.95rem;
-      line-height: 1.6;
-    }
+    @media (max-width: 768px) { font-size: 0.95rem; line-height: 1.6; }
   }
 }
-
-// Cultural Awareness Card (Teal theme)
-.cultural-card {
-  border-top-color: #0F766E;
-
-  &:hover {
-    background: linear-gradient(135deg, #F0FDFA 0%, #FFFFFF 100%);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #0F766E, #14B8A6);
-  }
-}
-
-// Skills-Based Learning Card (Blue theme)
-.skills-card {
-  border-top-color: #2563EB;
-
-  &:hover {
-    background: linear-gradient(135deg, #EFF6FF 0%, #FFFFFF 100%);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #2563EB, #3B82F6);
-  }
-}
-
-// Physical and Mental Growth Card (Green theme)
-.growth-card {
-  border-top-color: #059669;
-
-  &:hover {
-    background: linear-gradient(135deg, #ECFDF5 0%, #FFFFFF 100%);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #059669, #10B981);
-  }
-}
-
-// Social and Emotional Development Card (Pink theme)
-.emotional-card {
-  border-top-color: #BE185D;
-
-  &:hover {
-    background: linear-gradient(135deg, #FDF2F8 0%, #FFFFFF 100%);
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #BE185D, #EC4899);
-  }
-}
-
-// Animation for cards appearing
+.philosophy-card:nth-child(1) { animation-delay: 0.1s; }
+.philosophy-card:nth-child(2) { animation-delay: 0.2s; }
+.philosophy-card:nth-child(3) { animation-delay: 0.3s; }
+.philosophy-card:nth-child(4) { animation-delay: 0.4s; }
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
-
-.philosophy-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.philosophy-card:nth-child(1) {
-  animation-delay: 0.1s;
-}
-
-.philosophy-card:nth-child(2) {
-  animation-delay: 0.2s;
-}
-
-.philosophy-card:nth-child(3) {
-  animation-delay: 0.3s;
-}
-
-.philosophy-card:nth-child(4) {
-  animation-delay: 0.4s;
-}
-
-// Background decorative elements
-// .philosophy::before {
-//   content: '';
-//   position: absolute;
-//   top: 20%;
-//   left: -100px;
-//   width: 200px;
-//   height: 200px;
-//   background: linear-gradient(45deg, #0F766E, #14B8A6);
-//   border-radius: 50%;
-//   opacity: 0.03;
-//   z-index: 0;
-
-//   @media (max-width: 768px) {
-//     display: none;
-//   }
-// }
-
-// .philosophy::after {
-//   content: '';
-//   position: absolute;
-//   bottom: 10%;
-//   right: -100px;
-//   width: 150px;
-//   height: 150px;
-//   background: linear-gradient(45deg, #BE185D, #EC4899);
-//   border-radius: 50%;
-//   opacity: 0.03;
-//   z-index: 0;
-
-//   @media (max-width: 768px) {
-//     display: none;
-//   }
-// }
-
-// Responsive grid adjustments
-@media (max-width: 1200px) {
-  .philosophy-grid {
-    gap: 24px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .philosophy-grid {
-    .philosophy-card:nth-child(3) {
-      animation-delay: 0.1s;
-    }
-    .philosophy-card:nth-child(4) {
-      animation-delay: 0.2s;
-    }
-  }
-}
-
-// Hover effects for better interactivity
-.philosophy-card {
-  cursor: pointer;
-  
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
-}
-
-// Additional responsive adjustments
+@media (max-width: 1200px) { .philosophy-grid { gap: 24px; } }
 @media (max-width: 640px) {
   .philosophy {
-    .section-header {
-      margin-bottom: 40px;
-    }
-    
-    .philosophy-intro {
-      margin-bottom: 35px;
-    }
+    .section-header { margin-bottom: 40px; }
+    .philosophy-intro { margin-bottom: 35px; }
   }
 }
-
-// Ensure proper spacing on very small screens
 @media (max-width: 360px) {
   .philosophy-card {
     padding: 20px 16px;
-    
     .card-header {
       gap: 10px;
       margin-bottom: 15px;
-      
-      .card-icon {
-        font-size: 1.6rem;
-      }
-      
-      .card-title {
-        font-size: 1.1rem;
-      }
+      .card-icon { font-size: 1.6rem; }
+      .card-title { font-size: 1.1rem; }
     }
-    
-    .card-description {
-      font-size: 0.9rem;
-    }
+    .card-description { font-size: 0.9rem; }
   }
 }

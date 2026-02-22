@@ -100,33 +100,33 @@
   }
 }
 
-// Excellence Card (Teal)
+// Excellence Card (Yellow)
 .excellence-card {
-  border-top-color: #00968F;
-  &:hover { background: linear-gradient(135deg, #f0faf9 0%, #FFFFFF 100%); }
+  border-top-color: #FBCD18;
+  &:hover { background: linear-gradient(135deg, #fffdf5 0%, #FFFFFF 100%); }
   &::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #00968F, #00b3ab);
+    background: linear-gradient(90deg, #FBCD18, #fcd84a);
   }
 }
 
-// Inclusivity Card (Orange)
+// Inclusivity Card (Yellow)
 .inclusivity-card {
-  border-top-color: #FF9E1B;
-  &:hover { background: linear-gradient(135deg, #fff8ed 0%, #FFFFFF 100%); }
+  border-top-color: #FBCD18;
+  &:hover { background: linear-gradient(135deg, #fffdf5 0%, #FFFFFF 100%); }
   &::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #FF9E1B, #ffb44d);
+    background: linear-gradient(90deg, #FBCD18, #fcd84a);
   }
 }
 
-// Collaboration Card (Green)
+// Collaboration Card (Yellow)
 .collaboration-card {
-  border-top-color: #228848;
-  &:hover { background: linear-gradient(135deg, #f0f9f3 0%, #FFFFFF 100%); }
+  border-top-color: #FBCD18;
+  &:hover { background: linear-gradient(135deg, #fffdf5 0%, #FFFFFF 100%); }
   &::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #228848, #2ea85a);
+    background: linear-gradient(90deg, #FBCD18, #fcd84a);
   }
 }
 

@@ -154,68 +154,19 @@
   &:hover::after { opacity: 1; }
 }
 
-// Teal cards
-.physical-card {
-  background: linear-gradient(135deg, #f0faf9 0%, #e8f5f4 100%);
-  border: 1px solid #c8ece9;
-  .card-title { color: #00968F; }
-  &:hover { background: linear-gradient(135deg, #e0f5f3 0%, #f0faf9 100%); }
-}
-
-// Green cards
-.social-card {
+// All curriculum cards use Green
+.physical-card,
+.social-card,
+.literacy-card,
+.math-card,
+.world-card,
+.arts-card,
+.islamic-card,
+.steam-card {
   background: linear-gradient(135deg, #f0f9f3 0%, #e5f5eb 100%);
   border: 1px solid #c3e6cf;
   .card-title { color: #228848; }
   &:hover { background: linear-gradient(135deg, #e0f2e6 0%, #f0f9f3 100%); }
-}
-
-// Orange cards
-.literacy-card {
-  background: linear-gradient(135deg, #fff8ed 0%, #fef0d5 100%);
-  border: 1px solid #fddca8;
-  .card-title { color: #FF9E1B; }
-  &:hover { background: linear-gradient(135deg, #fef0d5 0%, #fff8ed 100%); }
-}
-
-// Yellow cards
-.math-card {
-  background: linear-gradient(135deg, #fffdf5 0%, #fef8e0 100%);
-  border: 1px solid #f9e88a;
-  .card-title { color: #e0b600; }
-  &:hover { background: linear-gradient(135deg, #fef8e0 0%, #fffdf5 100%); }
-}
-
-// Teal variant
-.world-card {
-  background: linear-gradient(135deg, #f0faf9 0%, #d4f0ee 100%);
-  border: 1px solid #a0ddd9;
-  .card-title { color: #007a74; }
-  &:hover { background: linear-gradient(135deg, #d4f0ee 0%, #f0faf9 100%); }
-}
-
-// Orange variant
-.arts-card {
-  background: linear-gradient(135deg, #fff8ed 0%, #fff3e0 100%);
-  border: 1px solid #ffd9a0;
-  .card-title { color: #e08a10; }
-  &:hover { background: linear-gradient(135deg, #fff3e0 0%, #fff8ed 100%); }
-}
-
-// Yellow variant
-.islamic-card {
-  background: linear-gradient(135deg, #fffdf5 0%, #fef3c7 100%);
-  border: 1px solid #f9e88a;
-  .card-title { color: #e0b600; }
-  &:hover { background: linear-gradient(135deg, #fef3c7 0%, #fffdf5 100%); }
-}
-
-// Green variant
-.steam-card {
-  background: linear-gradient(135deg, #f0f9f3 0%, #ddf2e4 100%);
-  border: 1px solid #b3dfc2;
-  .card-title { color: #1a6b38; }
-  &:hover { background: linear-gradient(135deg, #ddf2e4 0%, #f0f9f3 100%); }
 }
 
 @keyframes fadeInUp {

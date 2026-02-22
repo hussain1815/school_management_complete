@@ -452,25 +452,25 @@
   }
 }
 
-// Vision Card (Orange)
+// Vision Card (Teal Blue)
 .vision-card {
-  &::before { background: linear-gradient(90deg, #FF9E1B, #ffb44d); }
-  .card-title { color: #FF9E1B; }
-  &:hover { background: linear-gradient(135deg, #fff8ed 0%, #FFFFFF 100%); }
+  &::before { background: linear-gradient(90deg, #00968F, #00b3ab); }
+  .card-title { color: #00968F; }
+  &:hover { background: linear-gradient(135deg, #f0faf9 0%, #FFFFFF 100%); }
 }
 
-// Mission Card (Teal)
+// Mission Card (Teal Blue)
 .mission-card {
   &::before { background: linear-gradient(90deg, #00968F, #00b3ab); }
   .card-title { color: #00968F; }
   &:hover { background: linear-gradient(135deg, #f0faf9 0%, #FFFFFF 100%); }
 }
 
-// Values Card (Green)
+// Values Card (Teal Blue)
 .values-card {
-  &::before { background: linear-gradient(90deg, #228848, #2ea85a); }
-  .card-title { color: #228848; }
-  &:hover { background: linear-gradient(135deg, #f0f9f3 0%, #FFFFFF 100%); }
+  &::before { background: linear-gradient(90deg, #00968F, #00b3ab); }
+  .card-title { color: #00968F; }
+  &:hover { background: linear-gradient(135deg, #f0faf9 0%, #FFFFFF 100%); }
 }
 
 // Animation for cards appearing

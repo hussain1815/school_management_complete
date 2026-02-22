@@ -187,39 +187,15 @@
   }
 }
 
-// Station themes using brand colors
-.art-station {
-  &::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #FF9E1B, #ffb44d);
-  }
-}
-
-.literacy-station {
-  &::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #00968F, #00b3ab);
-  }
-}
-
-.science-station {
-  &::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #228848, #2ea85a);
-  }
-}
-
-.sensory-station {
-  &::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #FBCD18, #fcd84a);
-  }
-}
-
+// All station cards use Green
+.art-station,
+.literacy-station,
+.science-station,
+.sensory-station,
 .math-station {
   &::before {
     content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
-    background: linear-gradient(90deg, #FF9E1B, #ffb44d);
+    background: linear-gradient(90deg, #228848, #2ea85a);
   }
 }
 
