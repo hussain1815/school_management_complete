@@ -2,6 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;600;700&display=swap');
 
+/* ===== Brand Color Palette ===== */
+:root {
+  --color-teal: #00968F;
+  --color-teal-light: #00b3ab;
+  --color-teal-dark: #007a74;
+  --color-green: #228848;
+  --color-green-light: #2ea85a;
+  --color-green-dark: #1a6b38;
+  --color-yellow: #FBCD18;
+  --color-yellow-light: #fcd84a;
+  --color-yellow-dark: #e0b600;
+  --color-orange: #FF9E1B;
+  --color-orange-light: #ffb44d;
+  --color-orange-dark: #e08a10;
+}
+
 * {
   margin: 0;
   padding: 0;

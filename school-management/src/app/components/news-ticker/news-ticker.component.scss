@@ -1,5 +1,5 @@
 .news-ticker {
-  background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+  background: linear-gradient(135deg, #FF9E1B 0%, #ffb44d 100%);
   color: white;
   padding: 12px 0;
   overflow: hidden;
@@ -34,12 +34,8 @@
 }
 
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
 .ticker-content:hover {
@@ -50,13 +46,7 @@
   .ticker-item {
     font-size: 13px;
     padding: 0 30px;
-    
-    &:not(:last-child)::after {
-      margin-left: 30px;
-    }
+    &:not(:last-child)::after { margin-left: 30px; }
   }
-  
-  .news-ticker {
-    padding: 10px 0;
-  }
+  .news-ticker { padding: 10px 0; }
 }

@@ -1,8 +1,8 @@
 <section id="hero-section" class="hero">
+  <div class="hero-overlay"></div>
   <div class="container">
     <div class="hero-content">
-      <!-- Left Content -->
-      <div class="hero-text">
+      <div class="hero-card">
         <h1 class="hero-title">
           {{ 'HERO.TITLE' | translate }}
           <span class="highlight">{{ 'HERO.HIGHLIGHT' | translate }}</span>
@@ -11,24 +11,8 @@
           {{ 'HERO.DESCRIPTION' | translate }}
         </p>
         <div class="hero-buttons">
-          <button class="btn-primary">{{ 'HERO.BOOK_TOUR' | translate }}</button>
-          <button class="btn-secondary">{{ 'HERO.OUR_PROGRAMS' | translate }}</button>
-        </div>
-      </div>
-
-      <!-- Right Content - Image -->
-      <div class="hero-image">
-        <div class="image-container">
-          <img src="../../../assets/photo-1503454537195-1dcabb73ffb9.png" 
-               alt="Happy child with paint" 
-               class="child-image">
-          <div class="badge">
-            <div class="star-icon">⭐</div>
-            <div class="badge-text">
-              <span class="badge-title">{{ 'HERO.BADGE_TITLE' | translate }}</span>
-              <span class="badge-subtitle">{{ 'HERO.BADGE_SUBTITLE' | translate }}</span>
-            </div>
-          </div>
+          <a href="#contact-section" class="btn-primary">{{ 'HERO.BOOK_TOUR' | translate }}</a>
+          <a href="#curriculum-section" class="btn-secondary">{{ 'HERO.OUR_PROGRAMS' | translate }}</a>
         </div>
       </div>
     </div>

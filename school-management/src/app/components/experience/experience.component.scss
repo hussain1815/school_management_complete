@@ -1,39 +1,26 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 .experience {
-  background: linear-gradient(135deg, #FF8C00 0%, #FFA500 100%);
+  background: linear-gradient(135deg, #00968F 0%, #00b3ab 100%);
   padding: 100px 0;
   position: relative;
   overflow: hidden;
-
-  @media (max-width: 768px) {
-    padding: 80px 0;
-  }
-
-  @media (max-width: 480px) {
-    padding: 60px 0;
-  }
+  @media (max-width: 768px) { padding: 80px 0; }
+  @media (max-width: 480px) { padding: 60px 0; }
 
   .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
-
-    @media (max-width: 768px) {
-      padding: 0 16px;
-    }
+    @media (max-width: 768px) { padding: 0 16px; }
   }
 }
 
-// Section Header
 .section-header {
   text-align: center;
   margin-bottom: 60px;
   color: white;
-
-  @media (max-width: 768px) {
-    margin-bottom: 50px;
-  }
+  @media (max-width: 768px) { margin-bottom: 50px; }
 
   .section-title {
     font-family: 'Inter', sans-serif;
@@ -42,19 +29,9 @@
     margin-bottom: 16px;
     line-height: 1.2;
     letter-spacing: -0.02em;
-
-    @media (max-width: 1024px) {
-      font-size: 2.5rem;
-    }
-
-    @media (max-width: 768px) {
-      font-size: 2rem;
-      margin-bottom: 12px;
-    }
-
-    @media (max-width: 480px) {
-      font-size: 1.75rem;
-    }
+    @media (max-width: 1024px) { font-size: 2.5rem; }
+    @media (max-width: 768px) { font-size: 2rem; margin-bottom: 12px; }
+    @media (max-width: 480px) { font-size: 1.75rem; }
   }
 
   .section-subtitle {
@@ -63,20 +40,13 @@
     font-weight: 400;
     line-height: 1.6;
     opacity: 0.95;
-
-    @media (max-width: 768px) {
-      font-size: 1rem;
-    }
+    @media (max-width: 768px) { font-size: 1rem; }
   }
 }
 
-// Facilities Introduction
 .facilities-intro {
   margin-bottom: 80px;
-
-  @media (max-width: 768px) {
-    margin-bottom: 60px;
-  }
+  @media (max-width: 768px) { margin-bottom: 60px; }
 
   .intro-content {
     max-width: 900px;
@@ -91,11 +61,7 @@
       margin-bottom: 40px;
       opacity: 0.95;
       text-align: center;
-
-      @media (max-width: 768px) {
-        font-size: 1rem;
-        margin-bottom: 30px;
-      }
+      @media (max-width: 768px) { font-size: 1rem; margin-bottom: 30px; }
     }
 
     .philosophy-highlight {
@@ -111,10 +77,7 @@
         font-weight: 600;
         margin-bottom: 15px;
         color: white;
-
-        @media (max-width: 768px) {
-          font-size: 1.3rem;
-        }
+        @media (max-width: 768px) { font-size: 1.3rem; }
       }
 
       p {
@@ -124,29 +87,20 @@
         line-height: 1.7;
         margin: 0;
         opacity: 0.95;
-
-        @media (max-width: 768px) {
-          font-size: 0.95rem;
-        }
+        @media (max-width: 768px) { font-size: 0.95rem; }
       }
 
-      @media (max-width: 768px) {
-        padding: 25px 20px;
-      }
+      @media (max-width: 768px) { padding: 25px 20px; }
     }
   }
 }
 
-// Workstation Section
 .workstation-section {
   .workstation-header {
     text-align: center;
     margin-bottom: 50px;
     color: white;
-
-    @media (max-width: 768px) {
-      margin-bottom: 40px;
-    }
+    @media (max-width: 768px) { margin-bottom: 40px; }
 
     .workstation-title {
       font-family: 'Inter', sans-serif;
@@ -154,15 +108,8 @@
       font-weight: 700;
       margin-bottom: 16px;
       line-height: 1.2;
-
-      @media (max-width: 768px) {
-        font-size: 1.8rem;
-        margin-bottom: 12px;
-      }
-
-      @media (max-width: 480px) {
-        font-size: 1.6rem;
-      }
+      @media (max-width: 768px) { font-size: 1.8rem; margin-bottom: 12px; }
+      @media (max-width: 480px) { font-size: 1.6rem; }
     }
 
     .workstation-subtitle {
@@ -173,34 +120,19 @@
       opacity: 0.95;
       max-width: 700px;
       margin: 0 auto;
-
-      @media (max-width: 768px) {
-        font-size: 1rem;
-      }
+      @media (max-width: 768px) { font-size: 1rem; }
     }
   }
 }
 
-// Stations Grid
 .stations-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
-
-  @media (max-width: 1024px) {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
-  }
-
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
-    gap: 18px;
-    max-width: 500px;
-    margin: 0 auto;
-  }
+  @media (max-width: 1024px) { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  @media (max-width: 768px) { grid-template-columns: 1fr; gap: 18px; max-width: 500px; margin: 0 auto; }
 }
 
-// Station Cards
 .station-card {
   background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
@@ -218,10 +150,7 @@
     background: rgba(255, 255, 255, 1);
   }
 
-  @media (max-width: 768px) {
-    padding: 25px 20px;
-    border-radius: 16px;
-  }
+  @media (max-width: 768px) { padding: 25px 20px; border-radius: 16px; }
 
   .station-header {
     margin-bottom: 20px;
@@ -231,11 +160,7 @@
       margin-bottom: 15px;
       display: block;
       transition: transform 0.3s ease;
-
-      @media (max-width: 768px) {
-        font-size: 2.2rem;
-        margin-bottom: 12px;
-      }
+      @media (max-width: 768px) { font-size: 2.2rem; margin-bottom: 12px; }
     }
 
     .station-name {
@@ -245,16 +170,11 @@
       color: #2D3748;
       margin: 0;
       line-height: 1.3;
-
-      @media (max-width: 768px) {
-        font-size: 1.2rem;
-      }
+      @media (max-width: 768px) { font-size: 1.2rem; }
     }
   }
 
-  &:hover .station-icon {
-    transform: scale(1.1) rotate(5deg);
-  }
+  &:hover .station-icon { transform: scale(1.1) rotate(5deg); }
 
   .station-description {
     font-family: 'Inter', sans-serif;
@@ -263,167 +183,77 @@
     line-height: 1.6;
     color: #4A5568;
     margin: 0;
-
-    @media (max-width: 768px) {
-      font-size: 0.95rem;
-    }
+    @media (max-width: 768px) { font-size: 0.95rem; }
   }
 }
 
-// Individual Station Themes
+// Station themes using brand colors
 .art-station {
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #EC4899, #F472B6);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #FF9E1B, #ffb44d);
   }
 }
 
 .literacy-station {
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #2563EB, #3B82F6);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #00968F, #00b3ab);
   }
 }
 
 .science-station {
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #059669, #10B981);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #228848, #2ea85a);
   }
 }
 
 .sensory-station {
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #7C3AED, #8B5CF6);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #FBCD18, #fcd84a);
   }
 }
 
 .math-station {
   &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, #D97706, #F59E0B);
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #FF9E1B, #ffb44d);
   }
 }
 
-// Animation for cards appearing
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.station-card {
-  animation: fadeInUp 0.6s ease-out;
-}
-
+.station-card { animation: fadeInUp 0.6s ease-out; }
 .station-card:nth-child(1) { animation-delay: 0.1s; }
 .station-card:nth-child(2) { animation-delay: 0.2s; }
 .station-card:nth-child(3) { animation-delay: 0.3s; }
 .station-card:nth-child(4) { animation-delay: 0.4s; }
 .station-card:nth-child(5) { animation-delay: 0.5s; }
 
-// Background decorative elements
 .experience::before {
   content: '';
   position: absolute;
-  top: -50px;
-  right: -50px;
-  width: 200px;
-  height: 200px;
+  top: -50px; right: -50px;
+  width: 200px; height: 200px;
   background: rgba(255, 255, 255, 0.1);
   border-radius: 50%;
   z-index: 0;
-
-  @media (max-width: 768px) {
-    width: 100px;
-    height: 100px;
-    top: -25px;
-    right: -25px;
-  }
+  @media (max-width: 768px) { width: 100px; height: 100px; top: -25px; right: -25px; }
 }
 
-// .experience::after {
-//   content: '';
-//   position: absolute;
-//   bottom: -100px;
-//   left: -100px;
-//   width: 300px;
-//   height: 300px;
-//   background: rgba(255, 255, 255, 0.05);
-//   border-radius: 50%;
-//   z-index: 0;
-
-//   @media (max-width: 768px) {
-//     width: 150px;
-//     height: 150px;
-//     bottom: -50px;
-//     left: -50px;
-//   }
-// }
-
-// Responsive adjustments for very small screens
 @media (max-width: 360px) {
   .station-card {
     padding: 20px 16px;
-    
     .station-header {
       margin-bottom: 16px;
-      
-      .station-icon {
-        font-size: 2rem;
-        margin-bottom: 10px;
-      }
-      
-      .station-name {
-        font-size: 1.1rem;
-      }
+      .station-icon { font-size: 2rem; margin-bottom: 10px; }
+      .station-name { font-size: 1.1rem; }
     }
-    
-    .station-description {
-      font-size: 0.9rem;
-    }
-  }
-  
-  .philosophy-highlight {
-    padding: 20px 16px;
-    
-    h3 {
-      font-size: 1.2rem;
-    }
-    
-    p {
-      font-size: 0.9rem;
-    }
+    .station-description { font-size: 0.9rem; }
   }
 }
