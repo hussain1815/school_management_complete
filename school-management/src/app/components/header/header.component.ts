@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { RouterLink } from '@angular/router';
 import { PdfDownloadService } from '../../services/pdf-download.service';
 
 @Component({
   selector: 'app-header',
-  imports: [TranslateModule],
+  imports: [TranslateModule, RouterLink],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })

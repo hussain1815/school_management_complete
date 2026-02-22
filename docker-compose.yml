@@ -13,6 +13,8 @@ services:
       - CORS_ORIGIN=localhost:4200
     ports:
       - "3000:3000"
+    volumes:
+      - gallery-uploads:/app/uploads
     restart: unless-stopped
 
   frontend:
@@ -23,3 +25,6 @@ services:
     depends_on:
       - backend
     restart: unless-stopped
+
+volumes:
+  gallery-uploads:

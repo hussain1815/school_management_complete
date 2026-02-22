@@ -10,103 +10,18 @@
 
     <!-- Policies Content -->
     <div class="policies-content">
-      
-      <!-- Morning Drop-Off -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.DROP_OFF_TITLE' | translate }}</h2>
+      <div class="policy-section" *ngFor="let section of policySections">
+        <h2 class="policy-title">{{ section.titleKey | translate }}</h2>
         <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.DROP_OFF_INTRO' | translate }}</p>
+          <p class="policy-intro">{{ section.introKey | translate }}</p>
           <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.DROP_OFF_LIST' | translate)">{{ item }}</li>
+            <li *ngFor="let item of getList(section.listKey)">{{ item }}</li>
           </ul>
-          <p class="policy-note">{{ 'POLICIES.DROP_OFF_NOTE' | translate }}</p>
+          <p class="policy-note">{{ section.noteKey | translate }}</p>
         </div>
       </div>
-
-      <!-- Home Time -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.HOME_TIME_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.HOME_TIME_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.HOME_TIME_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.HOME_TIME_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- Health and Hygiene -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.HEALTH_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.HEALTH_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.HEALTH_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.HEALTH_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- Registration -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.REGISTRATION_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.REGISTRATION_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.REGISTRATION_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.REGISTRATION_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- Fees -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.FEES_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.FEES_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.FEES_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.FEES_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- Withdrawal -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.WITHDRAWAL_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.WITHDRAWAL_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.WITHDRAWAL_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.WITHDRAWAL_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- First Aid -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.FIRST_AID_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.FIRST_AID_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.FIRST_AID_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.FIRST_AID_NOTE' | translate }}</p>
-        </div>
-      </div>
-
-      <!-- Quality Assurance -->
-      <div class="policy-section">
-        <h2 class="policy-title">{{ 'POLICIES.QUALITY_TITLE' | translate }}</h2>
-        <div class="policy-content">
-          <p class="policy-intro">{{ 'POLICIES.QUALITY_INTRO' | translate }}</p>
-          <ul class="policy-list">
-            <li *ngFor="let item of ('POLICIES.QUALITY_LIST' | translate)">{{ item }}</li>
-          </ul>
-          <p class="policy-note">{{ 'POLICIES.QUALITY_NOTE' | translate }}</p>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
+
+<app-footer></app-footer>

@@ -33,6 +33,16 @@ interface News {
   updatedAt: string;
 }
 
+interface GalleryImage {
+  id: number;
+  title: string;
+  imageUrl: string;
+  isActive: boolean;
+  order: number;
+  createdAt: string;
+  updatedAt: string;
+}
+
 @Component({
   selector: 'app-admin',
   standalone: true,
@@ -41,7 +51,7 @@ interface News {
   styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent implements OnInit {
-  activeTab: 'inquiries' | 'news' = 'inquiries';
+  activeTab: 'inquiries' | 'news' | 'gallery' = 'inquiries';
   inquiries: Inquiry[] = [];
   currentPage = 1;
   totalPages = 1;
@@ -50,7 +60,7 @@ export class AdminComponent implements OnInit {
   user: any = null;
   showDeleteModal = false;
   deleteTargetId: number | null = null;
-  deleteType: 'inquiry' | 'news' = 'inquiry';
+  deleteType: 'inquiry' | 'news' | 'gallery' = 'inquiry';
 
   // News management
   newsList: News[] = [];
@@ -62,6 +72,17 @@ export class AdminComponent implements OnInit {
     isActive: true,
     order: 0
   };
+
+  // Gallery management
+  galleryList: GalleryImage[] = [];
+  isLoadingGallery = false;
+  isSavingGallery = false;
+  showGalleryForm = false;
+  editingGallery: GalleryImage | null = null;
+  galleryForm = { title: '', isActive: true };
+  galleryImageFile: File | null = null;
+  galleryImagePreview: string | null = null;
+  private apiBase = environment.apiUrl.replace('/api/v1', '');
 
   constructor(private router: Router, private http: HttpClient) {}
 
@@ -89,10 +110,13 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  switchTab(tab: 'inquiries' | 'news') {
+  switchTab(tab: 'inquiries' | 'news' | 'gallery') {
     this.activeTab = tab;
     if (tab === 'news' && this.newsList.length === 0) {
       this.loadNews();
+    }
+    if (tab === 'gallery' && this.galleryList.length === 0) {
+      this.loadGallery();
     }
   }
 
@@ -227,9 +251,14 @@ export class AdminComponent implements OnInit {
   confirmDelete() {
     if (this.deleteTargetId === null) return;
 
-    const url = this.deleteType === 'news' 
-      ? `${environment.apiUrl}/news/${this.deleteTargetId}`
-      : `${environment.apiUrl}/inquiries/${this.deleteTargetId}`;
+    let url: string;
+    if (this.deleteType === 'news') {
+      url = `${environment.apiUrl}/news/${this.deleteTargetId}`;
+    } else if (this.deleteType === 'gallery') {
+      url = `${environment.apiUrl}/gallery/${this.deleteTargetId}`;
+    } else {
+      url = `${environment.apiUrl}/inquiries/${this.deleteTargetId}`;
+    }
 
     this.http.delete(url, {
       headers: this.getAuthHeaders()
@@ -239,6 +268,8 @@ export class AdminComponent implements OnInit {
         this.deleteTargetId = null;
         if (this.deleteType === 'news') {
           this.loadNews();
+        } else if (this.deleteType === 'gallery') {
+          this.loadGallery();
         } else {
           this.loadInquiries();
         }
@@ -278,6 +309,108 @@ export class AdminComponent implements OnInit {
 
   goHome() {
     this.router.navigate(['/']);
+  }
+
+  // Gallery methods
+  loadGallery() {
+    this.isLoadingGallery = true;
+    this.http.get<GalleryImage[]>(
+      `${environment.apiUrl}/gallery/all`,
+      { headers: this.getAuthHeaders() }
+    ).subscribe({
+      next: (images) => { this.galleryList = images; this.isLoadingGallery = false; },
+      error: (error) => {
+        console.error('Error loading gallery:', error);
+        if (error.status === 401) this.logout();
+        this.isLoadingGallery = false;
+      }
+    });
+  }
+
+  toggleGalleryForm() {
+    this.showGalleryForm = !this.showGalleryForm;
+    if (!this.showGalleryForm) this.cancelGalleryEdit();
+  }
+
+  onGalleryFileChange(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files[0]) {
+      this.galleryImageFile = input.files[0];
+      const reader = new FileReader();
+      reader.onload = (e) => { this.galleryImagePreview = e.target?.result as string; };
+      reader.readAsDataURL(this.galleryImageFile);
+    }
+  }
+
+  editGalleryImage(img: GalleryImage) {
+    this.editingGallery = img;
+    this.galleryForm = { title: img.title, isActive: img.isActive };
+    this.galleryImageFile = null;
+    this.galleryImagePreview = this.getGalleryImageUrl(img);
+    this.showGalleryForm = true;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  saveGalleryImage() {
+    if (!this.galleryForm.title.trim()) return;
+    if (!this.editingGallery && !this.galleryImageFile) return;
+
+    this.isSavingGallery = true;
+
+    const formData = new FormData();
+    formData.append('title', this.galleryForm.title);
+    formData.append('isActive', String(this.galleryForm.isActive));
+    formData.append('order', String(this.galleryList.length + 1));
+    if (this.galleryImageFile) formData.append('image', this.galleryImageFile);
+
+    const token = localStorage.getItem('authToken');
+    const headers = new HttpHeaders({ 'Authorization': `Bearer ${token}` });
+
+    if (this.editingGallery) {
+      this.http.put(`${environment.apiUrl}/gallery/${this.editingGallery.id}`, formData, { headers }).subscribe({
+        next: () => {
+          this.isSavingGallery = false;
+          this.loadGallery();
+          this.cancelGalleryEdit();
+        },
+        error: (err) => {
+          console.error('Error updating gallery image:', err);
+          this.isSavingGallery = false;
+          alert('Failed to update image. Please try again.');
+        }
+      });
+    } else {
+      this.http.post(`${environment.apiUrl}/gallery`, formData, { headers }).subscribe({
+        next: () => {
+          this.isSavingGallery = false;
+          this.loadGallery();
+          this.cancelGalleryEdit();
+        },
+        error: (err) => {
+          console.error('Error creating gallery image:', err);
+          this.isSavingGallery = false;
+          alert('Failed to upload image. Please try again.');
+        }
+      });
+    }
+  }
+
+  cancelGalleryEdit() {
+    this.showGalleryForm = false;
+    this.editingGallery = null;
+    this.galleryForm = { title: '', isActive: true };
+    this.galleryImageFile = null;
+    this.galleryImagePreview = null;
+  }
+
+  deleteGalleryImage(id: number) {
+    this.deleteTargetId = id;
+    this.deleteType = 'gallery';
+    this.showDeleteModal = true;
+  }
+
+  getGalleryImageUrl(img: GalleryImage): string {
+    return img.imageUrl.startsWith('http') ? img.imageUrl : `${this.apiBase}${img.imageUrl}`;
   }
 
   formatDate(dateString: string): string {

@@ -24,6 +24,9 @@
         <li class="nav-item">
           <a href="#facilities" class="nav-link" (click)="scrollToSection('facilities', $event)">{{ 'HEADER.FACILITIES' | translate }}</a>
         </li>
+        <li class="nav-item">
+          <a routerLink="/gallery" class="nav-link" (click)="isMenuOpen = false">{{ 'HEADER.GALLERY' | translate }}</a>
+        </li>
       </ul>
     </nav>
 

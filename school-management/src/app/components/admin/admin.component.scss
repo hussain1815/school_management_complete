@@ -907,3 +907,147 @@
     }
   }
 }
+
+// Gallery Admin
+.gallery-admin-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+  padding: 24px;
+}
+
+.gallery-admin-card {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 140, 0, 0.12);
+  }
+}
+
+.gallery-admin-img {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+.gallery-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+
+  &.active { background: #e8f5e9; color: #2e7d32; }
+  &.inactive { background: #ffebee; color: #c62828; }
+}
+
+.gallery-admin-info {
+  padding: 12px 16px 8px;
+
+  h4 {
+    margin: 0 0 4px;
+    font-size: 15px;
+    color: #1a365d;
+    font-weight: 600;
+  }
+
+  small {
+    color: #999;
+    font-size: 12px;
+  }
+}
+
+.gallery-admin-actions {
+  padding: 8px 16px 16px;
+  display: flex;
+  gap: 8px;
+}
+
+.image-preview {
+  margin-top: 8px;
+  border-radius: 8px;
+  overflow: hidden;
+  max-width: 200px;
+
+  img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+.file-input {
+  padding: 10px;
+  border: 2px dashed #e0e0e0;
+  border-radius: 8px;
+  width: 100%;
+  cursor: pointer;
+  font-size: 14px;
+  transition: border-color 0.2s;
+
+  &:hover { border-color: #FF8C00; }
+}
+
+.news-form-card input[type="text"] {
+  padding: 12px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  width: 100%;
+  box-sizing: border-box;
+
+  &:focus {
+    outline: none;
+    border-color: #FF8C00;
+  }
+}
+
+.gallery-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.btn-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top: 2px solid white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.btn-primary:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none !important;
+}
+
+@media (max-width: 768px) {
+  .gallery-admin-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+    padding: 16px;
+  }
+
+  .gallery-admin-actions {
+    flex-direction: column;
+    button { width: 100%; }
+  }
+}
