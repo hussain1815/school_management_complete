@@ -13,8 +13,10 @@ async function runMigration() {
   try {
     console.log('🔌 Connecting to database...');
 
-    // Read the migration SQL file
-    const migrationPath = path.join(__dirname, '../migrations/add_news_table.sql');
+    // Read the migration SQL file (pass filename as argument, defaults to add_news_table.sql)
+    const migrationFile = process.argv[2] || 'add_news_table.sql';
+    const migrationPath = path.join(__dirname, '../migrations', migrationFile);
+    console.log(`📄 Running migration: ${migrationFile}`);
     const sql = fs.readFileSync(migrationPath, 'utf8');
 
     console.log('📝 Running migration...');
